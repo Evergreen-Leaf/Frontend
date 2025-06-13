@@ -1,6 +1,6 @@
 <script setup>
-//import titlecadastro from '@/components/cadastro/titlecadastro.vue';
-//import formcadastro from '@/components/cadastro/formcadastro.vue';
+import titlecadastro from '@/components/cadastro/titlecadastro.vue';
+import formcadastro from '@/components/cadastro/formcadastro.vue';
 import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
 </script>
 <template>
@@ -34,7 +34,7 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 85%;
+  height: 90%;
   width: 40%;
   background-color: white;
   border-radius: 25px;
@@ -48,7 +48,7 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
 
 .form {
   width: 100%;
-  height: 80%;
+  height: 70%;
   display: flex;
   align-items: center;
   justify-content: center;

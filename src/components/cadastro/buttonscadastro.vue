@@ -4,7 +4,7 @@
             <button>CADASTRAR</button>
         </div>
         <div class="container-link">
-            <a href="Ja possui conta"></a>
+            <a href="">Ja possui uma conta?</a>
         </div>
     </div>
 </template>
@@ -26,14 +26,18 @@
 }
 
 button {
-    width: 50%;
+    width: 40%;
     height: 3.5rem;
     background-color: #68A239;
     color: white;
     border: none;
     border-radius: 30px;
-    font-size: 30px;
+    font-size: 25px;
     cursor: pointer;
 }
 
+a {
+    font-size: 15px;
+    color: #9E9E9E;
+}
 </style>
