@@ -12,7 +12,7 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
           <div class="form">
                 <formcadastro />
           </div>
-          <div>
+          <div class="buttons">
             <buttonscadastro />
           </div>
         </div>
@@ -49,6 +49,14 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
 .form {
   width: 100%;
   height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons {
+  width: 100%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
