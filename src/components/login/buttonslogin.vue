@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <div class="container-btn">
-            <button>CADASTRAR</button>
+            <button>ENTRAR</button>
         </div>
         <div class="container-link">
-            <router-link to="/" class="login-link">Já possui uma conta?</router-link>
+            <router-link to="/cadastro" class="cadastro-link">Não possui uma conta?</router-link>
         </div>
     </div>
 </template>
@@ -36,9 +36,8 @@ button {
     cursor: pointer;
 }
 
-.login-link {
+.cadastro-link {
     font-size: 15px;
     color: #9E9E9E;
 }
-
 </style>

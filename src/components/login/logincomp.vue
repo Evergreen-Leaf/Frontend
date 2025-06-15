@@ -1,20 +1,20 @@
 <script setup>
-import titlecadastro from '@/components/cadastro/titlecadastro.vue';
-import formcadastro from '@/components/cadastro/formcadastro.vue';
-import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
+import titlelogin from '@/components/login/titlelogin.vue';
+import formlogin from '@/components/login/formlogin.vue';
+import buttonslogin from '@/components/login/buttonslogin.vue';
 </script>
 <template>
   <div class="background">
     <div class="card">
       <div class="container">
         <div class="title">
-          <titlecadastro />
+          <titlelogin />
         </div>
         <div class="form">
-          <formcadastro />
+          <formlogin />
         </div>
         <div class="buttons">
-          <buttonscadastro />
+          <buttonslogin />
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
 .card {
   display: flex;
   align-items: center;
-  height: 90%;
+  height: 55%;
   width: 40%;
   background-color: white;
   border-radius: 15px;

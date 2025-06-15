@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>CADASTRO</h1>
+        <h1>LOGIN</h1>
         <p>Preencha suas informações</p>
     </div>
 </template>

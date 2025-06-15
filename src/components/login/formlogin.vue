@@ -1,12 +1,7 @@
 <template>
     <div class="container">
         <form action="">
-            <input type="text" placeholder="Nome de usuario" />
-            <label for="date">Data de nascimento</label>
-            <input type="date" name="date" >
-            <input type="number" name="CPF" placeholder="CPF" />
             <input type="email" name="email" placeholder="Email" />
-            <input type="number" name="telefone" placeholder="Telefone" />
             <input type="password" name="senha" placeholder="Senha" />
         </form>
     </div>
@@ -14,7 +9,7 @@
 <style scoped>
 .container {
     width: 100%;
-    height: 100%;
+
 }   
 
 input {
@@ -25,21 +20,22 @@ input {
     border-radius: 10px;
     font-size: 15px;    
     padding-left: 1rem;
-    margin-bottom: 1rem;
 }
 
+input[name="email"] {
+    margin-bottom: 1.5rem;
+}
 
 label {
     font-size: 20px;
-    margin-bottom: 1rem;
     color: #9E9E9E;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-around;
     width: 100%;
     height: 100%;
 
