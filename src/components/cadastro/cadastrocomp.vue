@@ -1,8 +1,21 @@
 <script setup>
-import titlecadastro from '@/components/cadastro/titlecadastro.vue';
-import formcadastro from '@/components/cadastro/formcadastro.vue';
-import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
+import { ref } from 'vue'
+
+import titlecadastro from '@/components/cadastro/titlecadastro.vue'
+import formcadastro from '@/components/cadastro/formcadastro.vue'
+import enderecoform from '@/components/cadastro/enderecoform.vue'
+import buttonscadastro from '@/components/cadastro/buttonscadastro.vue'
+const etapa = ref(1)
+
+function avancar() {
+  etapa.value++
+}
+
+function voltar() {
+  etapa.value--
+}
 </script>
+
 <template>
   <div class="background">
     <div class="card">
@@ -10,16 +23,25 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
         <div class="title">
           <titlecadastro />
         </div>
-        <div class="form">
-          <formcadastro />
-        </div>
+
+        <transition name="fade" mode="out-in">
+          <div class="form" :key="etapa">
+            <component :is="etapa === 1 ? formcadastro : enderecoform" />
+          </div>
+        </transition>
+
         <div class="buttons">
-          <buttonscadastro />
+          <buttonscadastro
+            :etapa="etapa"
+            @avancar="avancar"
+            @voltar="voltar"
+          />
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <style scoped>
 .background {
   background-image: url('../../../public/background.png');
@@ -39,6 +61,7 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
   width: 40%;
   background-color: white;
   border-radius: 15px;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
 }
 
 .container {
@@ -46,8 +69,7 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
   flex-direction: column;
   justify-content: space-evenly;
   width: 100%;
-  height: 80%;
-
+  height: 100%;
 }
 
 .title {
@@ -64,5 +86,14 @@ import buttonscadastro from '@/components/cadastro/buttonscadastro.vue';
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -14,12 +14,13 @@
 <style scoped>
 .container {
     width: 100%;
-    height: 100%;
+    display: flex;
+    align-items: center;
 }   
 
 input {
-    width: 65%;
-    height: 4.5rem;
+    width: 100%;
+    height: 4rem;
     background-color: #E3E3E3;
     border: none;
     border-radius: 10px;
@@ -39,9 +40,6 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-
+    width: 65%;
 }
 </style>

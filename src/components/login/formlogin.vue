@@ -14,7 +14,7 @@
 
 input {
     width: 65%;
-    height: 4.5rem;
+    height: 5rem;
     background-color: #E3E3E3;
     border: none;
     border-radius: 10px;
