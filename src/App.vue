@@ -1,13 +1,12 @@
 <script setup>
-import cadastroview from './views/cadastroview.vue';
 </script>
 
 <template>
-  <header>
-    <cadastroview />
-  </header>
+  <main>
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
+  </main>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,10 +1,16 @@
+<script setup>
+defineProps(['etapa'])
+</script>
+
 <template>
     <div class="container">
         <div class="container-btn">
-            <button>CADASTRAR</button>
+            <button class="back" v-if="etapa === 2" @click="$emit('voltar')">VOLTAR</button>
+            <button class="next" v-if="etapa === 1" @click="$emit('avancar')">PRÓXIMO</button>
+            <button class="finish" v-if="etapa === 2">FINALIZAR</button>
         </div>
         <div class="container-link">
-            <a href="">Ja possui uma conta?</a>
+            <router-link to="/" class="login-link">Já possui uma conta?</router-link>
         </div>
     </div>
 </template>
@@ -17,16 +23,28 @@
     width: 100%;
     height: 100%;
 }
+
 .container-btn {
-    width: 100%;
+    width: 70%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
-button {
-    width: 40%;
+.next {
+    width: 60%;
+    height: 3.5rem;
+    background-color: #68A239;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 25px;
+    cursor: pointer;    
+}
+
+.back, .finish {
+    width: 45%;
     height: 3.5rem;
     background-color: #68A239;
     color: white;
@@ -36,7 +54,7 @@ button {
     cursor: pointer;
 }
 
-a {
+.login-link {
     font-size: 15px;
     color: #9E9E9E;
 }
