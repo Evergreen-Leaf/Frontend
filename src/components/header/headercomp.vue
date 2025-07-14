@@ -21,7 +21,7 @@ header {
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: #d1d2d3;
+    background-color: #ffffff;
 }
 .logo {
     width: 20%;
@@ -32,5 +32,6 @@ header {
 .nav-side {
     width: 40%;
     display: flex;
+    justify-content: flex-end;
 }
 </style>
