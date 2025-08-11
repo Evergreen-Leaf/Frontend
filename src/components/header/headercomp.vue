@@ -1,6 +1,6 @@
 <script setup>
 import headerlogo from './headerlogo.vue';
-import headernav from './headernav.vue';
+import headernav from './headersearch.vue';
 import headernavside from './headernavside.vue';
 </script>
 <template>
@@ -22,15 +22,16 @@ header {
     display: flex;
     align-items: center;
     background-color: #ffffff;
+    border-bottom: 1.5px solid rgb(150, 150, 150);;
 }
 .logo {
-    width: 20%;
+    width: 30%;
 }
 .nav {
-    width: 40%;
+    width: 60%;
 }
 .nav-side {
-    width: 40%;
+    width: 20%;
     display: flex;
     justify-content: flex-end;
 }
