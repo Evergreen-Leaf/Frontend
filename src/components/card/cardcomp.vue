@@ -20,22 +20,25 @@ import cardinfo from './cardinfo.vue';
                 <cardimage />
                 <cardinfo />
         </div>
+        <div class="card-container">
+                <cardimage />
+                <cardinfo />
+        </div>
     </div>
 </template>
 <style scoped>
 .container {
     display: flex;
-    background-color: #EEEEEE;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
     height: 50vh;
 }
 
 .card-container {
-    width: 20%;
-    height: 95%;
+    width: 18%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

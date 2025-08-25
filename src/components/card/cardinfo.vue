@@ -11,7 +11,7 @@
 <style scoped>
 .container-info {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 0.5fr 0.6fr;
+    grid-template-rows: 0.6fr 1fr 0.3fr 0.6fr;
     width: 90%;
     height: 40%;
 }
@@ -29,11 +29,11 @@
     font-size: 14px;
     text-decoration: line-through;
     color: rgba(0, 0, 0, 0.29);
-     grid-row: 4/5;
+     grid-row: 3/4;
 }
 .price {
     font-size: 18px;
     font-weight: bold;
-    grid-row: 5/5;
+    grid-row: 4/4;
 }
 </style>
