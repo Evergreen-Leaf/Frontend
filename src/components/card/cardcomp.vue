@@ -24,6 +24,26 @@ import cardinfo from './cardinfo.vue';
                 <cardimage />
                 <cardinfo />
         </div>
+        <div class="card-container">
+                <cardimage />
+                <cardinfo />
+        </div>
+        <div class="card-container">
+                <cardimage />
+                <cardinfo />
+        </div>
+        <div class="card-container">
+                <cardimage />
+                <cardinfo />
+        </div>
+        <div class="card-container">
+                <cardimage />
+                <cardinfo />
+        </div>
+        <div class="card-container">
+                <cardimage />
+                <cardinfo />
+        </div>
     </div>
 </template>
 <style scoped>
@@ -42,7 +62,8 @@ import cardinfo from './cardinfo.vue';
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 20px 20px rgba(107, 107, 107, 0.25);
     border-radius: 12px;
+    margin: 0.8rem;
 }
 </style>
