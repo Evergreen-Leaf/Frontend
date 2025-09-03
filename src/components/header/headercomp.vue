@@ -18,11 +18,13 @@ import headernavside from './headernavside.vue';
 </template>
 <style scoped>
 header {
+    position: fixed;
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: #ffffff;
-    border-bottom: 1.5px solid rgb(150, 150, 150);;
+    background-color: #ffffff00;
+    padding: 0.5em;
+    z-index: 2;
 }
 .logo {
     width: 30%;

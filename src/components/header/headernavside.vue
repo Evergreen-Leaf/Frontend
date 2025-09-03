@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <img src="/public/cart.png">
-        <img src="/public/menu.png">
+        <img src="/public/cart-icon.png">
+        <img src="/public/profile-icon.png">
     </div>
 </template>
 <style scoped>

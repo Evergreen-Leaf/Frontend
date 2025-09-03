@@ -2,7 +2,7 @@
  <div class="container">
      <div class="pesquisa">
           <input type="search" placeholder="Buscar por"></input>
-          <img src="/public/search.png">
+          <img src="/public/search-icon.png">
      </div>
  </div>
 </template>
@@ -15,18 +15,23 @@
 
 .pesquisa {
      display: flex;
-     justify-content: space-between;
-     width: 50%;
+     justify-content: center;
+     align-items: center;
+     width: 70%;
      height: 100%;
-     border:  1.5px solid rgb(150, 150, 150);
-     padding: .5rem;
-     border-radius: 1rem;
+     border:  1.5px solid rgb(255, 255, 255);
+     padding: .6rem;
+     border-radius: 2rem;
 }
-input {
+input, input::placeholder {
      border-style: none;
      outline: none;
      width: 90%;
+     background-color: rgba(255, 255, 255, 0);
+     color: white;
+     font-size: 1rem;
 }
+
 
 
 </style>
