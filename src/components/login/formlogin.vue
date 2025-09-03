@@ -39,10 +39,4 @@ form {
     height: 100%;
 
 }
-
-@media   {
-    .SACOLA {
-        display: block  ;
-    }
-}
 </style>
