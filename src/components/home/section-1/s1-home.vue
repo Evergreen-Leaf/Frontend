@@ -2,7 +2,7 @@
 
 </script>
 <template>
-    <section>
+    <section >
         <img src="/public/background-home.png" alt="">
         <div class="container-text">
             <div>

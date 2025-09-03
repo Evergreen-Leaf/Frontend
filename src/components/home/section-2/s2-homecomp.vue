@@ -15,13 +15,14 @@ import s2HomeClasses from './s2-home-classes.vue';
 <style scoped>
 .container {
     width: 100%;
-    height: 75vh;
+    height: 90vh;
     display: grid;
     justify-content: center;
     justify-items: center;
     align-items: center;
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 2fr 2fr 6fr 2fr;
+    grid-template-rows: 2fr 2fr 1fr 6fr 2fr;
+    background-color: #EEEEEE;
 }
 
 .s2home-info {
