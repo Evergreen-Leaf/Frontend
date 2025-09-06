@@ -3,8 +3,7 @@
 </script>
 <template>
     <div>
-        <p>descrição do produtodescrição do produtodescrição do produtodescrição do produtodescrição do produtodescrição
-            do produtodescrição do produto do produtodescrição do produto do produtodescrição do produto</p>
+        <p>descrição do produtodescrição do produtodescrição do produtodescrição do produtodescrição do produtodescrição</p>
     </div>
 </template>
 <style scoped>
@@ -13,13 +12,13 @@
 div {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
 }
 
 p {
     color: #333333;
-    font-size: 24px;
+    font-size: 18px;
     width: 80%;
     font-family: "Inter Tight", sans-serif;
     font-optical-sizing: auto;

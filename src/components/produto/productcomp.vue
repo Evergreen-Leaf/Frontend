@@ -8,14 +8,20 @@ import productbuttons from './productbuttons.vue';
 <template>
     <div class="container-product-screen">
         <div class="container-product">
-            <div class="right">
-                <productimg />
+            <div class="left-container">
+                <div class="left">
+                    <productimg />
+                </div>
+                
             </div>
-            <div class="left">
-                <producttitle />
-                <productdescription />
-                <productprice />
-                <productbuttons />
+            <div class="right-container">
+                <div class="right">
+                    <producttitle />
+                    <productdescription />
+                    <productprice />
+                    <productbuttons />
+                </div>
+
             </div>
         </div>
     </div>
@@ -31,22 +37,39 @@ import productbuttons from './productbuttons.vue';
 }
 
 .container-product {
-    width: 80%;
-    height: 80%;
+    width: 86%;
+    height: 75%;
     display: flex;
+    background-color: #F7F7F7;
+    border-radius: 8px;
 }
 
-.right {
-    width: 45%;
+.left-container {
+    width: 68%;
     height: 100%;
-    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
 }
 
 .left {
-    width: 55%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    width: 92%;
+    height: 90%;
 }
 
+
+.right-container {
+    width: 32%;
+    height: 100%;
+    background-color: white;
+    border-radius: 0px 12px 12px 0px;
+}
+
+.right {
+    width: 100%;
+    height: 100%;
+       display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
 </style>

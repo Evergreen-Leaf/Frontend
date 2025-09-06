@@ -23,26 +23,25 @@ button {
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .btn-buy {
     border: none;
-    background-color: #333333;
+    background-color: #699E5F;
     color: white;
-    cursor: pointer;
     width: 80%;
     height: 30%;
-    font-size: 24px;
 }
 
 .btn-add {
-    background-color: #ffffff00;
-    border: 2px solid #333333;
-    color: #333333;
-    cursor: pointer;
+    background-color: #ffffff;
+    border: 2px solid #699E5F;
+    color: #699E5F;
     width: 80%;
     height: 30%;
-    font-size: 24px;
 }
 
 </style>
