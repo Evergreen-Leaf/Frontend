@@ -18,7 +18,7 @@ div {
 
 h1 {
     color: #333333;
-    font-size: 64px;
+    font-size: 35px;
     width: 80%;
     font-family: "Inter Tight", sans-serif;
     font-optical-sizing: auto;
