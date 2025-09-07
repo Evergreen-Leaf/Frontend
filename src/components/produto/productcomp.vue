@@ -4,6 +4,7 @@ import producttitle from './producttitle.vue';
 import productdescription from './productdescription.vue';
 import productprice from './productprice.vue';
 import productbuttons from './productbuttons.vue';
+import cardcomp from '../card/cardcomp.vue';
 </script>
 <template>
     <div class="container-product-screen">
@@ -25,8 +26,16 @@ import productbuttons from './productbuttons.vue';
             </div>
         </div>
     </div>
+    <div class="related-products">
+        <h2>RELACIONADOS</h2>
+        <div class="related-products-list">
+            <cardcomp />
+        </div>
+    </div>
 </template>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,700;1,700&family=Inter:opsz,wght@14..32,600&family=Lexend+Deca:wght@100..900&display=swap');
+
 .container-product-screen {
     width: 100%;
     height: 100vh;
@@ -50,7 +59,6 @@ import productbuttons from './productbuttons.vue';
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;
 }
 
 .left {
@@ -63,7 +71,7 @@ import productbuttons from './productbuttons.vue';
     width: 32%;
     height: 100%;
     background-color: white;
-    border-radius: 0px 12px 12px 0px;
+    border-radius: 0px 8px 8px 0px;
 }
 
 .right {
@@ -71,5 +79,32 @@ import productbuttons from './productbuttons.vue';
     height: 100%;
        display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+h2 {    font-family: "Inter Tight", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px ;
+}
+
+.related-products {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #EEEEEE;
+}
+
+.related-products-list {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 </style>
