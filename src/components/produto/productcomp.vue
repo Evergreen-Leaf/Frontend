@@ -5,6 +5,7 @@ import productdescription from './productdescription.vue';
 import productprice from './productprice.vue';
 import productbuttons from './productbuttons.vue';
 import cardcomp from '../card/cardcomp.vue';
+import footercomp from '../footer/footercomp.vue';
 </script>
 <template>
     <div class="container-product-screen">
@@ -13,7 +14,7 @@ import cardcomp from '../card/cardcomp.vue';
                 <div class="left">
                     <productimg />
                 </div>
-                
+
             </div>
             <div class="right-container">
                 <div class="right">
@@ -27,11 +28,15 @@ import cardcomp from '../card/cardcomp.vue';
         </div>
     </div>
     <div class="related-products">
-        <h2>RELACIONADOS</h2>
-        <div class="related-products-list">
-            <cardcomp />
+        <div class="related-products-container">
+            <h2>RELACIONADOS</h2>
+            <div class="related-products-list">
+                <cardcomp />
+            </div>
         </div>
+
     </div>
+    <footercomp />
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,700;1,700&family=Inter:opsz,wght@14..32,600&family=Lexend+Deca:wght@100..900&display=swap');
@@ -77,25 +82,34 @@ import cardcomp from '../card/cardcomp.vue';
 .right {
     width: 100%;
     height: 100%;
-       display: grid;
+    display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
-h2 {    font-family: "Inter Tight", sans-serif;
+h2 {
+    font-family: "Inter Tight", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    font-size: 32px ;
+    font-size: 32px;
 }
 
 .related-products {
     width: 100%;
-    height: 120vh;
+    height: 130vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #EEEEEE;
+}
+
+.related-products-container {
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: #EEEEEE;
 }
 
 .related-products-list {

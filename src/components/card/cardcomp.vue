@@ -36,14 +36,6 @@ import cardinfo from './cardinfo.vue';
                 <cardimage />
                 <cardinfo />
         </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
     </div>
 </template>
 <style scoped>
@@ -56,8 +48,8 @@ import cardinfo from './cardinfo.vue';
 }
 
 .card-container {
-    width: 18%;
-    height: 45vh;
+    width: 23%;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;

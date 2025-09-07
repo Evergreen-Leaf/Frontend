@@ -1,4 +1,4 @@
-import api from '@/router/plugins/axios'
+import api from '@/plugins/axios'
 
 export default {
   // Lista todos os produtos

@@ -22,7 +22,7 @@
     font-weight: bold;
 }
 .description {
-    font-size: 15px;
+    font-size: 14px;
     color: rgba(0, 0, 0, 0.56);   
 }
 .discount {
