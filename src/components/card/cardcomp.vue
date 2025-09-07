@@ -53,12 +53,11 @@ import cardinfo from './cardinfo.vue';
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 90%;
-    height: 50vh;
 }
 
 .card-container {
     width: 18%;
-    height: 100%;
+    height: 45vh;
     display: flex;
     flex-direction: column;
     align-items: center;

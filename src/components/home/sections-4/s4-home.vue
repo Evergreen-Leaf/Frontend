@@ -20,7 +20,6 @@ import cardcomp from '@/components/card/cardcomp.vue';
     width: 100%;
     height: 170vh;
     background-color: #EEEEEE;
-
 }
 
 .container-title {
@@ -33,6 +32,7 @@ import cardcomp from '@/components/card/cardcomp.vue';
 
 .container-products {
     width: 100%;
+    height: 30%;
     display: flex;
     justify-content: center;
 }
