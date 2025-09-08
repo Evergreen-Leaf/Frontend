@@ -1,52 +1,32 @@
 <script setup>
-import cardimage from './cardimage.vue';
-import cardinfo from './cardinfo.vue';
+import cardimage from './cardimage.vue'
+import cardinfo from './cardinfo.vue'
+import { useRouter } from 'vue-router'
+
+const props = defineProps({
+  produto: {
+    type: Object,
+    required: true
+  }
+})
+
+const router = useRouter()
+function verDetalhes() {
+  router.push(`/produto/${props.produto.id}`)
+}
 </script>
+
 <template>
-    <div class="container">
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-        <div class="card-container">
-                <cardimage />
-                <cardinfo />
-        </div>
-    </div>
+  <div class="card-container" @click="verDetalhes">
+    <cardimage />
+    <cardinfo
+      :nome="produto.nome"
+      :preco="produto.preco"
+      :desconto="produto.desconto"
+    />
+  </div>
 </template>
 <style scoped>
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 90%;
-}
-
 .card-container {
     width: 23%;
     height: 50vh;

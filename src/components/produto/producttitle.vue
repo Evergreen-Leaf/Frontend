@@ -1,9 +1,10 @@
 <script setup>
-
+import { useProdutoStore } from '@/stores/produto'
+const produtoStore = useProdutoStore()
 </script>
 <template>
     <div>
-        <h1>NOME DO PRODUTO</h1>
+          <h1 v-if="produtoStore.produto">{{ produtoStore.produto.nome }}</h1>
     </div>
 </template>
 <style scoped>

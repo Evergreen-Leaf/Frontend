@@ -1,12 +1,24 @@
 <script setup>
-import productimg from './productimg.vue';
-import producttitle from './producttitle.vue';
-import productdescription from './productdescription.vue';
-import productprice from './productprice.vue';
-import productbuttons from './productbuttons.vue';
-import cardcomp from '../card/cardcomp.vue';
-import footercomp from '../footer/footercomp.vue';
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useProdutoStore } from '@/stores/produto'
+
+import productimg from './productimg.vue'
+import producttitle from './producttitle.vue'
+import productdescription from './productdescription.vue'
+import productprice from './productprice.vue'
+import productbuttons from './productbuttons.vue'
+import cardcomp from '../card/cardcomp.vue'
+import footercomp from '../footer/footercomp.vue'
+
+const route = useRoute()
+const produtoStore = useProdutoStore()
+
+onMounted(() => {
+  produtoStore.fetchProduto(route.params.id) // pega pelo id da URL
+})
 </script>
+
 <template>
     <div class="container-product-screen">
         <div class="container-product">

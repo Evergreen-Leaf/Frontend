@@ -1,5 +1,5 @@
 <script setup>
-import cardcomp from '@/components/card/cardcomp.vue';
+import productlist from '@/components/produto/productlist.vue';
 </script>
 <template>
     <div class="container-s4">
@@ -9,7 +9,7 @@ import cardcomp from '@/components/card/cardcomp.vue';
             </h1>
         </div>
         <div class="container-products">
-            <cardcomp />
+            <ProductList :quantidade="4" /> 
         </div>
     </div>
 </template>

@@ -1,12 +1,19 @@
 <script setup>
+const props = defineProps({
+  nome: String,
+  descricao: String,
+  preco: Number,
+  desconto: Number
+})
 </script>
+
 <template>
-<div class="container-info">
-    <p class="title">Chips de Arroz e Milho</p>
-    <p class="description">Descriçaõ do produtoDescriçaõ do produtoDescriçaõ do produto</p>
-    <p class="discount">R$ 24,90</p>
-    <p class="price">R$ 20,90</p>
-</div>
+  <div class="container-info">
+    <p class="title">{{ nome }}</p>
+    <p class="description">{{ descricao }}</p>
+    <p class="discount" v-if="desconto">R$ {{ desconto }}</p>
+    <p class="price">R$ {{ preco }}</p>
+  </div>
 </template>
 <style scoped>
 .container-info {

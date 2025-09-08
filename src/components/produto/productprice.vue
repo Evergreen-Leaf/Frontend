@@ -1,21 +1,21 @@
 <script setup>
-
+import { useProdutoStore } from '@/stores/produto'
+const produtoStore = useProdutoStore()
 </script>
-<template>
-    <div class="container-price-add">
-        <div class="price-add">
-            <p class="discount">R$ 24,90</p>
-            <p class="price">R$ 20,90</p>
-            <div class="container-add">
-                <div class="add">
-                    <button>-</button>
-                    <p>1</p>
-                    <button>+</button>
-                </div>
-            </div>
 
+<template>
+  <div class="container-price-add" v-if="produtoStore.produto">
+    <div class="price-add">
+      <p class="price">R$ {{ produtoStore.produto.preco }}</p>
+      <div class="container-add">
+        <div class="add">
+          <button>-</button>
+          <p>1</p>
+          <button>+</button>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital@0;1&family=Inter:opsz,wght@14..32,600&family=Lexend+Deca:wght@100..900&display=swap');
@@ -47,13 +47,6 @@
     font-style: normal;
     grid-column: 1;
     grid-row: 2;
-}
-
-.discount {
-    font-size: 14px;
-    text-decoration: line-through;
-    color: rgba(0, 0, 0, 0.29);
-    margin-top: 2em;
 }
 
 .container-add {
