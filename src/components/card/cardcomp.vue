@@ -10,21 +10,18 @@ const props = defineProps({
   }
 })
 
-const router = useRouter()
-function verDetalhes() {
-  router.push(`/produto/${props.produto.id}`)
-}
+
 </script>
 
 <template>
-  <div class="card-container" @click="verDetalhes">
+  <router-link :to="`/produto/${props.produto.id}`" class="card-container" @click="verDetalhes">
     <cardimage />
     <cardinfo
       :nome="produto.nome"
       :preco="produto.preco"
       :desconto="produto.desconto"
     />
-  </div>
+  </router-link>
 </template>
 <style scoped>
 .card-container {
@@ -36,5 +33,6 @@ function verDetalhes() {
     box-shadow: 0px 20px 20px rgba(107, 107, 107, 0.25);
     border-radius: 12px;
     margin: 0.8rem;
+    cursor: pointer;
 }
 </style>

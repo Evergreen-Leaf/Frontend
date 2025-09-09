@@ -8,14 +8,15 @@ import producttitle from './producttitle.vue'
 import productdescription from './productdescription.vue'
 import productprice from './productprice.vue'
 import productbuttons from './productbuttons.vue'
-import cardcomp from '../card/cardcomp.vue'
+import productlist from '@/components/produto/productlist.vue'
 import footercomp from '../footer/footercomp.vue'
 
 const route = useRoute()
 const produtoStore = useProdutoStore()
 
 onMounted(() => {
-  produtoStore.fetchProduto(route.params.id) // pega pelo id da URL
+  produtoStore.fetchProduto(route.params?.id)
+  console.log(route.params?.id)
 })
 </script>
 
@@ -43,7 +44,7 @@ onMounted(() => {
         <div class="related-products-container">
             <h2>RELACIONADOS</h2>
             <div class="related-products-list">
-                <cardcomp />
+                <productlist :quantidade="2" /> 
             </div>
         </div>
 
@@ -118,6 +119,7 @@ h2 {
 
 .related-products-container {
     height: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

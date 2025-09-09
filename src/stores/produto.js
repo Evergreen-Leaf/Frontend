@@ -1,6 +1,6 @@
 // stores/produto.js
 import { defineStore } from 'pinia'
-import axios from '../plugins/axios'
+import api from '../plugins/axios'
 
 export const useProdutoStore = defineStore('produto', {
   state: () => ({
@@ -14,8 +14,8 @@ export const useProdutoStore = defineStore('produto', {
     async fetchProdutos() {
       this.loading = true
       try {
-        const res = await axios.get("/produtos/")
-        this.produtos = res.data
+        const res = await api.get("/produtos/")
+        this.produtos = res.data.results
       } catch (err) {
         this.error = err
       } finally {
@@ -26,7 +26,7 @@ export const useProdutoStore = defineStore('produto', {
     async fetchProduto(id) {
       this.loading = true
       try {
-        const res = await axios.get(`/produtos/${id}/`)
+        const res = await api.get(`/produtos/${id}/`)
         this.produto = res.data
       } catch (err) {
         this.error = err
