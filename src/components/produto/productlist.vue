@@ -6,8 +6,8 @@ import CardComp from '@/components/card/cardcomp.vue'
 const produtoStore = useProdutoStore()
 
 const props = defineProps({
-  categoria: String,   // opcional, pode filtrar por categoria
-  quantidade: Number   // opcional, limite de cards
+  categoria: String,
+  quantidade: Number 
 })
 
 onMounted(() => {
