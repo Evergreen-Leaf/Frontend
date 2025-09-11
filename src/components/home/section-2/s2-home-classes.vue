@@ -7,22 +7,22 @@
             <h1>CATEGORIAS</h1>
         </div>
         <div class="classes">
-            <div>
+            <div  @click="$router.push('/pagina-produto/')">
                 <img src="/public/Card-Ervas.png">
             </div>
-            <div>
+            <div @click="$router.push('/pagina-produto/')">
                 <img src="/public/Card-Chás.png">
             </div>
-            <div>
+            <div  @click="$router.push('/pagina-produto/')">
                 <img src="/public/Card-Chips.png">
             </div>
-            <div>
+            <div  @click="$router.push('/pagina-produto/')">
                 <img src="/public/Card-Óles.png">
             </div>
-            <div>
+            <div  @click="$router.push('/pagina-produto/')">
                 <img src="/public/Card-Suplementos.png">
             </div>
-            <div>
+            <div  @click="$router.push('/pagina-produto/')">
                 <img src="/public/Card-Nozes.png">
             </div>
         </div>

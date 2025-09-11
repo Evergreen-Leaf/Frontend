@@ -11,17 +11,36 @@ const produtoStore = useProdutoStore()
 onMounted(() => {
     produtoStore.fetchProduto(route.params.id)
 })
+
+onMounted(async () => {
+  const elements = document.querySelectorAll('.fade-in')
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  elements.forEach((el) => observer.observe(el))
+  await getUserInfo()
+})
 </script>
 <template>
     <div class="container-product-page">
         <div class="container-benefit">
-            <benefit />
+            <benefit  class="hidden fade-in"/>
         </div>
         <div class="container-products-title">
-            <h1>PRODUTOS</h1>
+            <h1  class="hidden fade-in" >PRODUTOS</h1>
         </div>
         <div class="container-products">
-            <productlist :quantidade="4" />
+            <productlist :quantidade="4"  class="hidden fade-in" />
         </div>
     </div>
 
@@ -38,7 +57,7 @@ onMounted(() => {
 
 .container-benefit {
     width: 100%;
-    height: 30vh;
+    height: 40vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,5 +77,18 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s,
+    transform 0.8s;
+}
+
+.visible {
+  opacity: 2;
+  transform: translateY(0);
 }
 </style>

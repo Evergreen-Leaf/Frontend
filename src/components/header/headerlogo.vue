@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @click="$router.push('/')">
         <img src="/public/logo.png">
     </div>
 </template>
