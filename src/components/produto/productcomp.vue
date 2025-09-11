@@ -1,7 +1,5 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import { useProdutoStore } from '@/stores/produto'
 
 import productimg from './productimg.vue'
 import producttitle from './producttitle.vue'
@@ -9,14 +7,25 @@ import productdescription from './productdescription.vue'
 import productprice from './productprice.vue'
 import productbuttons from './productbuttons.vue'
 import productlist from '@/components/produto/productlist.vue'
-import footercomp from '../footer/footercomp.vue'
 
-const route = useRoute()
-const produtoStore = useProdutoStore()
 
-onMounted(() => {
-  produtoStore.fetchProduto(route.params?.id)
-  console.log(route.params?.id)
+onMounted(async () => {
+  const elements = document.querySelectorAll('.fade-in')
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  elements.forEach((el) => observer.observe(el))
+  await getUserInfo()
 })
 </script>
 
@@ -25,16 +34,16 @@ onMounted(() => {
         <div class="container-product">
             <div class="left-container">
                 <div class="left">
-                    <productimg />
+                    <productimg class="hidden fade-in" />
                 </div>
 
             </div>
             <div class="right-container">
                 <div class="right">
-                    <producttitle />
-                    <productdescription />
-                    <productprice />
-                    <productbuttons />
+                    <producttitle class="hidden fade-in"/>
+                    <productdescription class="hidden fade-in"/>
+                    <productprice class="hidden fade-in"/>
+                    <productbuttons class="hidden fade-in"/>
                 </div>
 
             </div>
@@ -44,12 +53,11 @@ onMounted(() => {
         <div class="related-products-container">
             <h2>RELACIONADOS</h2>
             <div class="related-products-list">
-                <productlist :quantidade="2" /> 
+                <productlist :quantidade="2" class="hidden fade-in"/> 
             </div>
         </div>
 
     </div>
-    <footercomp />
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,700;1,700&family=Inter:opsz,wght@14..32,600&family=Lexend+Deca:wght@100..900&display=swap');
@@ -133,5 +141,18 @@ h2 {
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s,
+    transform 0.8s;
+}
+
+.visible {
+  opacity: 2;
+  transform: translateY(0);
 }
 </style>

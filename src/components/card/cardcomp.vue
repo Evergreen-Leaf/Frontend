@@ -35,4 +35,10 @@ const props = defineProps({
     margin: 0.8rem;
     cursor: pointer;
 }
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
 </style>

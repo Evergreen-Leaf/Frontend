@@ -4,9 +4,9 @@ const produtoStore = useProdutoStore()
 </script>
 
 <template>
-  <div class="container-price-add" v-if="produtoStore.produto">
+  <div class="container-price-add">
     <div class="price-add">
-      <p class="price">R$ {{ produtoStore.produto.preco }}</p>
+      <p class="price"  v-if="produtoStore.produto">R$ {{ produtoStore.produto.preco }}</p>
       <div class="container-add">
         <div class="add">
           <button>-</button>
