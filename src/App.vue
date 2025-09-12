@@ -1,9 +1,9 @@
 <script setup>
 
 import { onMounted } from 'vue'
-import { useProdutosStore } from '@/stores'
+import { useProdutoStore } from '@/stores'
 
-const produtosStore= useProdutosStore()
+const produtosStore= useProdutoStore()
 
 onMounted(async () => {
   await produtosStore.getProdutos();
@@ -12,9 +12,12 @@ onMounted(async () => {
 </script>
 
 <template>
-
-    {{ produtosStore.state.produtos }}
-
+  <main>
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
+  </main>
 </template>
+
 
 <style scoped></style>

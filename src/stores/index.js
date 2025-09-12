@@ -1,3 +1,3 @@
-import { useProdutosStore } from "@/stores/produto2.js";
+import { useProdutoStore } from "@/stores/produto.js";
 
-export { useProdutosStore };
+export { useProdutoStore };

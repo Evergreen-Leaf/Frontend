@@ -11,14 +11,14 @@ const props = defineProps({
 })
 
 onMounted(() => {
-  produtoStore.fetchProdutos(props.categoria)
+  produtoStore.getProdutos(props.categoria)
 })
 </script>
 
 <template>
   <div class="container">
     <CardComp
-      v-for="(p, index) in produtoStore.produtos.slice(0, props.quantidade || produtoStore.produtos.length)"
+      v-for="(p, index) in produtoStore.state.produtos.slice(0, props.quantidade || produtoStore.produtos.length)"
       :key="p.id"
       :produto="p"
     />

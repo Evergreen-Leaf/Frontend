@@ -4,7 +4,7 @@ class ProdutosService {
     async getProdutos() {
         try {
             const response = await api.get(`/produtos/`);
-            return response.results;
+            return response;
         } catch (error) {
             console.error(error);
             return error;
@@ -23,7 +23,7 @@ class ProdutosService {
 
     async createProduto(data) {
         try {
-            const response = await api.post(`/produtos/, data`);
+            const response = await api.post(`/produtos/`, data);
             return response;
         } catch (error) {
             console.error(error);
@@ -40,6 +40,7 @@ class ProdutosService {
             return error;
         }
     }
+
 }
 
 export default new ProdutosService();

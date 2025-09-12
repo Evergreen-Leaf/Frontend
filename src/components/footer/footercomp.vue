@@ -17,7 +17,7 @@ onMounted(async () => {
   )
 
   elements.forEach((el) => observer.observe(el))
-  await getUserInfo()
+  // await getUserInfo()
 })
 </script>
 <template>

@@ -6,13 +6,13 @@ import benefit from "@/components/home/section-2/s2-home-info.vue"
 import productlist from '../produto/productlist.vue';
 
 const route = useRoute()
-const produtoStore = useProdutoStore()
-
-onMounted(() => {
-    produtoStore.fetchProduto(route.params.id)
-})
+const produtosStore = useProdutoStore()
 
 onMounted(async () => {
+  // 👉 carrega o produto pelo ID da rota
+  await produtosStore.getProduto(route.params.id)
+
+  // animação fade-in
   const elements = document.querySelectorAll('.fade-in')
 
   const observer = new IntersectionObserver(
@@ -28,22 +28,21 @@ onMounted(async () => {
   )
 
   elements.forEach((el) => observer.observe(el))
-  await getUserInfo()
 })
 </script>
-<template>
-    <div class="container-product-page">
-        <div class="container-benefit">
-            <benefit  class="hidden fade-in"/>
-        </div>
-        <div class="container-products-title">
-            <h1  class="hidden fade-in" >PRODUTOS</h1>
-        </div>
-        <div class="container-products">
-            <productlist :quantidade="4"  class="hidden fade-in" />
-        </div>
-    </div>
 
+<template>
+  <div class="container-product-page">
+    <div class="container-benefit">
+      <benefit class="hidden fade-in"/>
+    </div>
+    <div class="container-products-title">
+      <h1 class="hidden fade-in">PRODUTOS</h1>
+    </div>
+    <div class="container-products">
+      <productlist :quantidade="4" class="hidden fade-in" />
+    </div>
+  </div>
 </template>
 <style scoped>
 .container-product-page {

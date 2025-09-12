@@ -4,7 +4,8 @@ const produtoStore = useProdutoStore()
 </script>
 <template>
     <div>
-          <h1 v-if="produtoStore.produto">{{ produtoStore.produto.nome }}</h1>
+        {{ produtoStore.state }}
+          <h1 v-if="produtoStore.state.selectedProduto">{{ produtoStore.state.selectedProduto }}</h1>
     </div>
 </template>
 <style scoped>
