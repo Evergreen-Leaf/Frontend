@@ -26,7 +26,7 @@ export const useProdutoStore = defineStore("produtos", () => {
         state.loading = true;
         try{
             const response  = await ProdutosService.getProduto(id);
-            state.selectedProduto = response;
+            state.selectedProduto = response.data.results;
             return response;
         }
         catch (error) {

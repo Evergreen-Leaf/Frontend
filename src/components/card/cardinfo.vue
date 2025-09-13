@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
   nome: String,
-  descricao: String,
+  descricaocard: String,
   preco: Number,
   desconto: Number
 })
@@ -10,8 +10,7 @@ const props = defineProps({
 <template>
   <div class="container-info">
     <p class="title">{{ nome }}</p>
-    <p class="description">{{ descricao }}</p>
-    <p class="discount" v-if="desconto">R$ {{ desconto }}</p>
+    <p class="description">{{ descricaocard }}</p>
     <p class="price">R$ {{ preco }}</p>
   </div>
 </template>
@@ -31,12 +30,6 @@ const props = defineProps({
 .description {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.56);   
-}
-.discount {
-    font-size: 14px;
-    text-decoration: line-through;
-    color: rgba(0, 0, 0, 0.29);
-     grid-row: 3/4;
 }
 .price {
     font-size: 18px;

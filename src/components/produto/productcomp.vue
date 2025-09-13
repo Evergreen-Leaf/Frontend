@@ -25,7 +25,14 @@ onMounted(async () => {
   )
 
   elements.forEach((el) => observer.observe(el))
-  // await getUserInfo()
+})
+
+
+const props = defineProps({
+  produto: {
+    type: Object,
+    required: true
+  }
 })
 </script>
 
@@ -53,7 +60,7 @@ onMounted(async () => {
         <div class="related-products-container">
             <h2>RELACIONADOS</h2>
             <div class="related-products-list">
-                <productlist :quantidade="2" class="hidden fade-in"/> 
+                <productlist :quantidade="4" class="hidden fade-in"/> 
             </div>
         </div>
 

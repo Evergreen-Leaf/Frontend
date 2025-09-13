@@ -1,3 +1,3 @@
 import ProdutosService from "@/services/produto.js";
 
-export { ProdutosService  };
+export { ProdutosService };

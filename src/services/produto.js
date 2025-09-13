@@ -14,7 +14,7 @@ class ProdutosService {
     async getProduto(id) {
         try {
             const response = await api.get(`/produtos/${id}/`);
-            return response.results;
+            return response;
         } catch (error) {
             console.error(error);
             return error;

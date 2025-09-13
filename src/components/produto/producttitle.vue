@@ -1,11 +1,11 @@
 <script setup>
 import { useProdutoStore } from '@/stores/produto'
 const produtoStore = useProdutoStore()
+
 </script>
 <template>
     <div>
-        {{ produtoStore.state }}
-          <h1 v-if="produtoStore.state.selectedProduto">{{ produtoStore.state.selectedProduto }}</h1>
+          <h1 v-if="produtoStore.produto">{{ produtoStore.produto.nome }}</h1>
     </div>
 </template>
 <style scoped>
