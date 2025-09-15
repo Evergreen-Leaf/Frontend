@@ -1,5 +1,5 @@
 <script setup>
-import cardimage from './cardimageteste.vue'
+import cardimage from './cardimage.vue'
 import cardinfo from './cardinfo.vue'
 
 const props = defineProps({
