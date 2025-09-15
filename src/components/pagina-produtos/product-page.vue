@@ -9,7 +9,7 @@ const route = useRoute()
 const produtosStore = useProdutoStore()
 
 onMounted(async () => {
-  await produtosStore.getProduto(route.params.id)
+  await produtosStore.getProductsByCategoria(route.params.name)
 
   // animação fade-in
   const elements = document.querySelectorAll('.fade-in')
@@ -39,7 +39,7 @@ onMounted(async () => {
       <h1 class="hidden fade-in">PRODUTOS</h1>
     </div>
     <div class="container-products">
-      <productlist :quantidade="8" class="hidden fade-in" />
+      <productlist :quantidade="8" :categoria="route.params.name" class="hidden fade-in" />
     </div>
   </div>
 </template>

@@ -14,7 +14,8 @@ export const useCategoriaStore = defineStore("categorias", () => {
     state.loading = true;
     try {
       const response = await CategoriasService.getCategorias();
-      state.categorias = response.data.results;
+      state.categorias = response.data;
+      return response;
     } catch (error) {
       state.error = error;
       console.error(error);
