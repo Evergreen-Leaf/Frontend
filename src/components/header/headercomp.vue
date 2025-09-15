@@ -49,7 +49,7 @@ onUnmounted(() => {
       <div class="header-s2">
         <a href="/">HOME</a>
         <div>
-          <a href="/pagina-produto/">PRODUTOS</a>
+          <a href="/pagina-produto/ervas">PRODUTOS</a>
         </div>
         <a href="https://www.nutren.com.br/mulher/artigos/ciencia-da-nutricao/bem-estar-saude">
           DICAS DE BEM-ESTAR

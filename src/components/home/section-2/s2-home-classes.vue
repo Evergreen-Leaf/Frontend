@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useCategoriaStore } from '@/stores/categoria';
 
-const categorias = [{id: 1, name:"Ervas", image: "/public/Card-Ervas.png"}, {id: 2, name:"Suplementos", image: "/public/Card-Suplementos.png"}, {id: 3, name:"Chás", image: "/public/Card-Chás.png"}, {id: 4, name:"Chips", image: "/public/Card-Chips.png"}, {id: 5, name:"Oleaginosas", image: "/public/Card-Nozes.png"}, {id: 6, name:"Òleos", image: "/public/Card-Òleos.png"}];
+const categorias = [{id: 1, name:"Ervas", image: "/public/Card-Ervas.png"}, {id: 2, name:"Suplementos", image: "/public/Card-Suplementos.png"}, {id: 3, name:"Chás", image: "/public/Card-Chás.png"}, {id: 4, name:"Chips", image: "/public/Card-Chips.png"}, {id: 5, name:"Oleaginosas", image: "/public/Card-Nozes.png"}, {id: 6, name:"Òleos", image: "/public/Card-Óleos.png"}];
 
 const categoriaStore = useCategoriaStore();
 onMounted(async () => {
@@ -17,7 +17,7 @@ onMounted(async () => {
         <div class="classes" >
             <div v-for="categoria in categorias" :key="categoria.id">
                 <div @click="$router.push(`/pagina-produto/${categoria.name.toLowerCase()}`)" style="cursor: pointer;">
-                    <img src="/public/Card-Ervas.png">
+                    <img :src="categoria.image"/>
                 </div>
             </div>
         </div>

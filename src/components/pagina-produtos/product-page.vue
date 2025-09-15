@@ -36,7 +36,7 @@ onMounted(async () => {
       <benefit class="hidden fade-in"/>
     </div>
     <div class="container-products-title">
-      <h1 class="hidden fade-in">PRODUTOS</h1>
+      <h1 class="hidden fade-in" ><h1 class="hidden fade-in">{{ route.params.name }}</h1></h1>
     </div>
     <div class="container-products">
       <productlist :quantidade="8" :categoria="route.params.name" class="hidden fade-in" />
