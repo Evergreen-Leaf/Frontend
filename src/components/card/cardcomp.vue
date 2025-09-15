@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <router-link :to="`/produto/${props.produto.id}`" class="card-container" @click="verDetalhes">
+  <router-link :to="`/produto/${props.produto.id}`" class="card-container">
     <cardimage />
     <cardinfo
       :nome="produto.nome"

@@ -9,7 +9,7 @@ import productlist from '@/components/produto/productlist.vue';
             </h1>
         </div>
         <div class="container-products">
-            <productlist :quantidade="2" /> 
+            <productlist :quantidade="8" /> 
         </div>
     </div>
 </template>

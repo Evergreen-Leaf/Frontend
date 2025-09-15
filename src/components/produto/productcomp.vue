@@ -1,6 +1,11 @@
 <script setup>
 import { onMounted } from 'vue'
+import { useProdutoStore } from '@/stores/produto'
 
+import { useRoute } from 'vue-router'
+
+const router = useRoute()
+const produtoStore = useProdutoStore()
 import productimg from './productimg.vue'
 import producttitle from './producttitle.vue'
 import productdescription from './productdescription.vue'
@@ -8,8 +13,8 @@ import productprice from './productprice.vue'
 import productbuttons from './productbuttons.vue'
 import productlist from '@/components/produto/productlist.vue'
 
-
 onMounted(async () => {
+    await produtoStore.getProduto(router.params.id)
   const elements = document.querySelectorAll('.fade-in')
 
   const observer = new IntersectionObserver(
@@ -27,13 +32,6 @@ onMounted(async () => {
   elements.forEach((el) => observer.observe(el))
 })
 
-
-const props = defineProps({
-  produto: {
-    type: Object,
-    required: true
-  }
-})
 </script>
 
 <template>
@@ -74,7 +72,7 @@ const props = defineProps({
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     background-color: #EEEEEE;
 }
 
@@ -84,6 +82,7 @@ const props = defineProps({
     display: flex;
     background-color: #F7F7F7;
     border-radius: 8px;
+    margin-bottom: 3rem;
 }
 
 .left-container {
@@ -124,7 +123,7 @@ h2 {
 
 .related-products {
     width: 100%;
-    height: 130vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

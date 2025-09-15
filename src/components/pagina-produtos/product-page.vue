@@ -40,7 +40,7 @@ onMounted(async () => {
       <h1 class="hidden fade-in">PRODUTOS</h1>
     </div>
     <div class="container-products">
-      <productlist :quantidade="4" class="hidden fade-in" />
+      <productlist :quantidade="8" class="hidden fade-in" />
     </div>
   </div>
 </template>
@@ -56,10 +56,11 @@ onMounted(async () => {
 
 .container-benefit {
     width: 100%;
-    height: 40vh;
+    height: 30vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    margin-bottom: 2rem;
 }
 
 .container-products-title {

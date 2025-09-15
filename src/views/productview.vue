@@ -27,7 +27,7 @@ watch(
 </script>
 
 <template>
-  <headercomp />
+  <headercomp  :forceScrolled="true"/>
   <productcomp />
   <footercomp />
 </template>

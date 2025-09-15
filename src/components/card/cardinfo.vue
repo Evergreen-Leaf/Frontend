@@ -3,7 +3,6 @@ const props = defineProps({
   nome: String,
   descricaocard: String,
   preco: Number,
-  desconto: Number
 })
 </script>
 

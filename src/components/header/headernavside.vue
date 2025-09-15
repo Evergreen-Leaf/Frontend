@@ -1,7 +1,15 @@
+<script setup>
+defineProps({
+    scrolled: Boolean
+})
+</script>
 <template>
     <div class="container">
-        <img src="/public/cart-icon.png">
-        <img src="/public/profile-icon.png">
+        <img v-if="!scrolled" src="/public/cart-icon.png" />
+        <img v-else src="/public/cart-icon-black.png" />
+
+        <img v-if="!scrolled" src="/public/profile-icon.png" />
+        <img v-else src="/public/profile-icon-black.png" />
     </div>
 </template>
 <style scoped>

@@ -2,6 +2,8 @@ import { ProdutosService } from "@/services";
 import { defineStore } from "pinia";
 import { reactive } from "vue";
 
+
+
 export const useProdutoStore = defineStore("produtos", () => {
     const state = reactive({
         produtos: [],
@@ -26,7 +28,7 @@ export const useProdutoStore = defineStore("produtos", () => {
         state.loading = true;
         try{
             const response  = await ProdutosService.getProduto(id);
-            state.selectedProduto = response.data.results;
+            state.selectedProduto = response.data;
             return response;
         }
         catch (error) {

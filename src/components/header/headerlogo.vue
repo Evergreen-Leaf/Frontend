@@ -1,6 +1,12 @@
+<script setup>
+defineProps({
+  scrolled: Boolean
+})
+</script>
 <template>
     <div @click="$router.push('/')">
-        <img src="/public/logo.png">
+        <img v-if="!scrolled" src="/public/logo.png" />
+        <img v-else src="/public/logo-colorida.png" />
     </div>
 </template>
 <style scoped>
