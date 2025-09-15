@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useCategoriaStore } from '@/stores/categoria';
 
-const categorias = [{id: 1, name:"Ervas", image: "/public/Card-Ervas.png"}, {id: 2, name:"Suplementos", image: "/public/Card-Suplementos.png"}, {id: 3, name:"Chás", image: "/public/Card-Chás.png"}, {id: 4, name:"Chips", image: "/public/Card-Chips.png"}, {id: 5, name:"Oleaginosas", image: "/public/Card-Nozes.png"}, {id: 6, name:"Òleos", image: "/public/Card-Óleos.png"}];
+const categorias = [{id: 1, name:"Ervas", image: "@/src/public/Card-Ervas.png"}, {id: 2, name:"Suplementos", image: "@/src/public/Card-Suplementos.png"}, {id: 3, name:"Chás", image: "@/src/public/Card-Chás.png"}, {id: 4, name:"Chips", image: "@/src/public/Card-Chips.png"}, {id: 5, name:"Oleaginosas", image: "@/src/public/Card-Nozes.png"}, {id: 6, name:"Òleos", image: "@/src/public/Card-Óleos.png"}];
 
 const categoriaStore = useCategoriaStore();
 onMounted(async () => {
