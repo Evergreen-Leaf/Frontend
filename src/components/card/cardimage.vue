@@ -1,10 +1,16 @@
 <script setup>
-import { useProdutoStore } from '@/stores/produto'
-const {state} = useProdutoStore()
+
+const props = defineProps({
+  img: {
+    type: String,
+    required: true
+  }
+})
+
 </script>
 <template>
 <div class="container-img">
-    <img :src="state.selectedProduto?.photo[0]?.file">
+    <img :src="props.img"/>
 </div>
 </template>
 <style scoped>

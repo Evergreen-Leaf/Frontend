@@ -13,7 +13,7 @@ const props = defineProps({
 
 <template>
   <router-link :to="`/produto/${props.produto.id}`" class="card-container">
-    <cardimage />
+    <cardimage :img="produto.photo[0]?.file"/>
     <cardinfo
       :nome="produto.nome"
       :preco="produto.preco"
