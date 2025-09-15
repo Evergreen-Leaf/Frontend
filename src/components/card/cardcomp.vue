@@ -1,0 +1,42 @@
+<script setup>
+import cardimage from './cardimage.vue'
+import cardinfo from './cardinfo.vue'
+
+const props = defineProps({
+  produto: {
+    type: Object,
+    required: true
+  }
+})
+
+</script>
+
+<template>
+  <router-link :to="`/produto/${props.produto.id}`" class="card-container">
+    <cardimage />
+    <cardinfo
+      :nome="produto.nome"
+      :preco="produto.preco"
+      :descricaocard="produto.descricaocard"
+    />
+  </router-link>
+</template>
+<style scoped>
+.card-container {
+    width: 23%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 20px 20px rgba(107, 107, 107, 0.25);
+    border-radius: 12px;
+    margin: 0.8rem;
+    cursor: pointer;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+</style>

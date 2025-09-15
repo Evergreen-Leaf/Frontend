@@ -9,7 +9,6 @@
 <style scoped>
 .container {
     width: 100%;
-
 }   
 
 input {

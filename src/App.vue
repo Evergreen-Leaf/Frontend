@@ -1,4 +1,14 @@
 <script setup>
+
+import { onMounted } from 'vue'
+import { useProdutoStore } from '@/stores'
+
+const produtosStore= useProdutoStore()
+
+onMounted(async () => {
+  await produtosStore.getProdutos();
+});
+
 </script>
 
 <template>
@@ -8,5 +18,6 @@
     </router-view>
   </main>
 </template>
+
 
 <style scoped></style>
