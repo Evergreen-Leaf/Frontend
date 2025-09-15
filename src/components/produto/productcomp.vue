@@ -41,7 +41,6 @@ onMounted(async () => {
                 <div class="left">
                     <productimg class="hidden fade-in" />
                 </div>
-
             </div>
             <div class="right-container">
                 <div class="right">
@@ -50,7 +49,6 @@ onMounted(async () => {
                     <productprice class="hidden fade-in"/>
                     <productbuttons class="hidden fade-in"/>
                 </div>
-
             </div>
         </div>
     </div>

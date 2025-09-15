@@ -32,7 +32,7 @@ const {state} = useProdutoStore()
 }
 
 .main-container {
-    width: 78%;
+    width: 75%;
     height: 100%;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
@@ -42,11 +42,10 @@ const {state} = useProdutoStore()
 }
 
 .secundary-container {
-    width: 18%;
+    width: 20%;
     height: 100%;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 10px;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
 }
 
 .secundary-img-container {
@@ -57,16 +56,19 @@ const {state} = useProdutoStore()
 }
 
 .main-img {
-    width: 90%;
-    height: 90%;
+    width: 60%;
+    height: 80%;
     border-radius: 15px;
     object-fit: cover;
 }
 
 .secundary-imgs {
     width: 100%;
-    height: 100%;
+    height: 150px;
     border-radius: 15px;
     object-fit: cover;
+    
 }
+
+
 </style>

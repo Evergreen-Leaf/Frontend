@@ -25,8 +25,8 @@ const props = defineProps({
 }
 
 img {
-    width: 80%;
-    height: 80%;
+    width: 50%;
+    height: 90%;
     object-fit: cover;
 }
 </style>
