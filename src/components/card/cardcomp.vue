@@ -1,7 +1,6 @@
 <script setup>
 import cardimage from './cardimage.vue'
 import cardinfo from './cardinfo.vue'
-import { useRouter } from 'vue-router'
 
 const props = defineProps({
   produto: {
@@ -10,16 +9,15 @@ const props = defineProps({
   }
 })
 
-
 </script>
 
 <template>
-  <router-link :to="`/produto/${props.produto.id}`" class="card-container" @click="verDetalhes">
+  <router-link :to="`/produto/${props.produto.id}`" class="card-container">
     <cardimage />
     <cardinfo
       :nome="produto.nome"
       :preco="produto.preco"
-      :desconto="produto.desconto"
+      :descricaocard="produto.descricaocard"
     />
   </router-link>
 </template>

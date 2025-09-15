@@ -1,12 +1,12 @@
 <script setup>
 import { useProdutoStore } from '@/stores/produto'
-const produtoStore = useProdutoStore()
+const {state} = useProdutoStore()
 </script>
 
 <template>
   <div class="container-price-add">
     <div class="price-add">
-      <p class="price"  v-if="produtoStore.produto">R$ {{ produtoStore.produto.preco }}</p>
+      <p class="price" >R$ {{ state.selectedProduto?.preco }}</p>
       <div class="container-add">
         <div class="add">
           <button>-</button>

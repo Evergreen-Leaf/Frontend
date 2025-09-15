@@ -9,6 +9,11 @@ export default defineConfig([
   {
     name: 'app/files-to-lint',
     files: ['**/*.{js,mjs,jsx,vue}'],
+    rules: {
+      'vue/multi-word-component-names': ['error', {
+        'ignores': ['default']
+      }],
+    }
   },
 
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
@@ -23,10 +28,12 @@ export default defineConfig([
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
-  
+
   {
     ...pluginVitest.configs.recommended,
+
     files: ['src/**/__tests__/*'],
+
   },
   skipFormatting,
 ])

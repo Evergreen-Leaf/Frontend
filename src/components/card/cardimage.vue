@@ -1,8 +1,10 @@
 <script setup>
+import { useProdutoStore } from '@/stores/produto'
+const {state} = useProdutoStore()
 </script>
 <template>
 <div class="container-img">
-    <img src="/public/imagem-chips.png" alt="">
+    <img :src="state.selectedProduto?.photo[0]?.file">
 </div>
 </template>
 <style scoped>
@@ -17,8 +19,8 @@
 }
 
 img {
-    width: 90%;
-    height: 90%;
+    width: 80%;
+    height: 80%;
     object-fit: cover;
 }
 </style>
