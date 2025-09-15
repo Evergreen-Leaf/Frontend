@@ -1,5 +1,11 @@
 <script setup>
+import { onMounted, ref } from 'vue';
+import { useCategoriaStore } from '@/stores/categoria';
 
+const categoriaStore = useCategoriaStore();
+onMounted(async () => {
+    await categoriaStore.getCategorias();
+});
 </script>
 <template>
     <div class="container-classes">
@@ -7,22 +13,22 @@
             <h1>CATEGORIAS</h1>
         </div>
         <div class="classes">
-            <div  @click="$router.push('/pagina-produto/')">
+            <div @click="$router.push('/pagina-produto/1')">
                 <img src="/public/Card-Ervas.png">
             </div>
-            <div @click="$router.push('/pagina-produto/')">
+            <div @click="$router.push('/pagina-produto/2')">
                 <img src="/public/Card-Chás.png">
             </div>
-            <div  @click="$router.push('/pagina-produto/')">
+            <div @click="$router.push('/pagina-produto/3')">
                 <img src="/public/Card-Chips.png">
             </div>
-            <div  @click="$router.push('/pagina-produto/')">
+            <div @click="$router.push('/pagina-produto/4')">
                 <img src="/public/Card-Óles.png">
             </div>
-            <div  @click="$router.push('/pagina-produto/')">
+            <div @click="$router.push('/pagina-produto/5')">
                 <img src="/public/Card-Suplementos.png">
             </div>
-            <div  @click="$router.push('/pagina-produto/')">
+            <div @click="$router.push('/pagina-produto/6')">
                 <img src="/public/Card-Nozes.png">
             </div>
         </div>

@@ -9,7 +9,6 @@ const route = useRoute()
 const produtosStore = useProdutoStore()
 
 onMounted(async () => {
-  // 👉 carrega o produto pelo ID da rota
   await produtosStore.getProduto(route.params.id)
 
   // animação fade-in
