@@ -83,7 +83,7 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
-    border-bottom: 1.5px solid #909090;
+    border-bottom: 0.5px solid #909090;
     color: #909090;
     margin-bottom: 10px;
 }
@@ -122,7 +122,7 @@ h1 {
 
 .finalize-container {
     width: 100%;
-    height: 32%;
+    height: 32%; 
 }
 
 .finalize {
