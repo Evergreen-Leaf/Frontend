@@ -106,10 +106,11 @@
     background-color: #F7F7F7;
     border-radius: 15px 0px 0px 15px;
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 1fr 5fr;
     grid-template-columns: 1fr;
     align-items: center;
     justify-items: center;
+    border-right: 1.5px solid rgba(0, 0, 0, 0.2);
 }
 
 title {
@@ -141,11 +142,12 @@ h1 {
     height: 12%;
     background-color: white;
     border-radius: 22px;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
 
 }
 
 .item-carrinho {
-    width: 96%;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -169,10 +171,11 @@ h1 {
     gap: 2rem;
     font-size: 20px;
     color: #333333;
+    margin-right: 0.5em;
 }
 
 button {
-    width: 3.5em;
+    width: 4em;
     height: 3.5rem;
     background-color: #e0e0e000;
     border: 1.5px solid #ff0000;

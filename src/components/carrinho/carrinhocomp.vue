@@ -38,5 +38,6 @@ import carrinhoright from './carrinhoright.vue';
     background-color: white;
     border-radius: 15px;
     display: flex;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
 }
 </style>
