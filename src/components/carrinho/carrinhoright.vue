@@ -1,7 +1,22 @@
 <script setup>
-</script>
+import { useCarrinhosStore } from "@/stores/carrinho";
+import { useRouter } from "vue-router";
 
+const carrinho = useCarrinhosStore();
+const router = useRouter();
+
+const finalizarCompra = () => {
+    alert("Compra finalizada com sucesso!");
+    carrinho.clearCarrinho();
+};
+
+const continuarComprando = () => {
+    router.push("/");
+};
+
+</script>
 <template>
+
     <div class="container-right">
         <div class="container-right-content">
             <div class="title">
@@ -14,27 +29,29 @@
                     <p>Preço</p>
                 </div>
                 <div class="info-container">
-                    <div class="info-item">
-                        <p>3</p>
-                        <p>chips de mandioca</p>
-                        <p>R$59,70</p>
+                    <div class="info-item" v-for="item in carrinho.state.carrinhos" :key="item.id">
+                        <p>{{ item.quantidade }}</p>
+                        <p>{{ item.nome }}</p>
+                        <p>R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
                     </div>
                 </div>
             </div>
             <div class="total-products">
                 <p>Total</p>
-                <p>R$ 000.00</p>
+                <p>R$ {{ carrinho.total().toFixed(2) }}</p>
             </div>
             <div class="finalize-continue-btns">
                 <div class="finalize-container">
-                    <button class="finalize">Finalizar compra</button>
+                    <button class="finalize" @click="finalizarCompra">Finalizar compra</button>
                 </div>
                 <div class="continue-container">
-                    <button class="continue">Continuar comprando</button>
+                    <button class="continue" @click="continuarComprando">Continuar comprando</button>
                 </div>
             </div>
         </div>
+
     </div>
+
 </template>
 <style scoped>
 .container-right {
@@ -90,13 +107,12 @@ h1 {
 
 .info-item {
     width: 100%;
-    height: 20%;
-    margin-top: 10px;
+    height: 30%;
+    margin-top: 1.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
-    margin-bottom: 10px;
     color: #909090;
 }
 

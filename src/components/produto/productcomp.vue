@@ -32,6 +32,17 @@ onMounted(async () => {
   elements.forEach((el) => observer.observe(el))
 })
 
+
+import { useCarrinhosStore } from "@/stores/carrinho";
+const carrinho = useCarrinhosStore();
+
+const adicionarProduto = async (produto) => {
+  await carrinho.createCarrinho({
+    nome: produto.nome,
+    preco: produto.preco,
+    quantidade: 1,
+  });
+};
 </script>
 
 <template>
