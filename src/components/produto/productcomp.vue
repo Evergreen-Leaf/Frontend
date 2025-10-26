@@ -36,13 +36,6 @@ onMounted(async () => {
 import { useCarrinhosStore } from "@/stores/carrinho";
 const carrinho = useCarrinhosStore();
 
-const adicionarProduto = async (produto) => {
-  await carrinho.createCarrinho({
-    nome: produto.nome,
-    preco: produto.preco,
-    quantidade: 1,
-  });
-};
 </script>
 
 <template>
@@ -59,7 +52,7 @@ const adicionarProduto = async (produto) => {
                     <producttitle class="hidden fade-in"/>
                     <productdescription class="hidden fade-in"/>
                     <productprice class="hidden fade-in"/>
-                    <productbuttons class="hidden fade-in"/>
+                    <productbuttons  :produto="produtoStore.state.selectedProduto" class="hidden fade-in"/>
                 </div>
 
             </div>

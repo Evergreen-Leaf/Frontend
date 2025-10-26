@@ -1,60 +1,45 @@
-import CarrinhosService from "@/services/carrinho";
 import { defineStore } from "pinia";
 import { reactive } from "vue";
+import CarrinhosService from "@/services/carrinho";
 
-export const useCarrinhosStore = defineStore("carrinhos", () => {
+export const useCarrinhosStore = defineStore("carrinho", () => {
   const state = reactive({
-    carrinhos: [], // lista de itens
-    selectedCarrinho: null,
+    carrinhos: [],
     loading: false,
     error: null,
   });
 
-  const getCarrinhos = async () => {
+  const carregarCarrinho = async () => {
     state.loading = true;
     try {
       const response = await CarrinhosService.getCarrinhos();
-      state.carrinhos = response.data.results;
+      state.carrinhos = response.data.results || response.data;
     } catch (error) {
+      console.error("Erro ao carregar carrinho:", error);
       state.error = error;
     } finally {
       state.loading = false;
     }
   };
 
-  const carregarCarrinho = async () => {
-        await getCarrinhos()
-    };
-
   const createCarrinho = async (data) => {
-    state.loading = true;
     try {
       const response = await CarrinhosService.createCarrinho(data);
       state.carrinhos.push(response.data);
-      return response;
     } catch (error) {
+      console.error("Erro ao adicionar item:", error);
       state.error = error;
-      console.error(error);
-    } finally {
-      state.loading = false;
     }
   };
 
   const deleteCarrinho = async (id) => {
-    state.loading = true;
     try {
       await CarrinhosService.deleteCarrinho(id);
-      state.carrinhos = state.carrinhos.filter((c) => c.id !== id);
+      state.carrinhos = state.carrinhos.filter((item) => item.id !== id);
     } catch (error) {
+      console.error("Erro ao deletar item:", error);
       state.error = error;
-      console.error(error);
-    } finally {
-      state.loading = false;
     }
-  };
-
-  const clearCarrinho = () => {
-    state.carrinhos = [];
   };
 
   const total = () => {
@@ -64,13 +49,24 @@ export const useCarrinhosStore = defineStore("carrinhos", () => {
     );
   };
 
+  const clearCarrinho = async () => {
+    try {
+      for (const item of state.carrinhos) {
+        await CarrinhosService.deleteCarrinho(item.id);
+      }
+      state.carrinhos = [];
+    } catch (error) {
+      console.error("Erro ao limpar carrinho:", error);
+      state.error = error;
+    }
+  };
+
   return {
     state,
-    getCarrinhos,
+    carregarCarrinho,
     createCarrinho,
     deleteCarrinho,
-    clearCarrinho,
     total,
-    carregarCarrinho,
+    clearCarrinho,
   };
 });

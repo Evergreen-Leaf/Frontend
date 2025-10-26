@@ -2,16 +2,13 @@
 import carrinholeft from './carrinholeft.vue';
 import carrinhoright from './carrinhoright.vue';
 import { onMounted } from 'vue';
-
 import { useCarrinhosStore } from "@/stores/carrinho";
-
 
 const carrinho = useCarrinhosStore();
 
 onMounted(() => {
   carrinho.carregarCarrinho(); 
 });
-
 </script>
 
 <template>

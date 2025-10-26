@@ -6,52 +6,52 @@ const carrinho = useCarrinhosStore();
 const router = useRouter();
 
 const finalizarCompra = () => {
-    alert("Compra finalizada com sucesso!");
-    carrinho.clearCarrinho();
+  alert("Compra finalizada com sucesso!");
+  carrinho.clearCarrinho();
 };
 
 const continuarComprando = () => {
-    router.push("/");
+  router.push("/pagina-produto");
 };
-
 </script>
+
 <template>
+  <div class="container-right">
+    <div class="container-right-content">
+      <div class="title">
+        <h1>Resumo do carrinho</h1>
+      </div>
 
-    <div class="container-right">
-        <div class="container-right-content">
-            <div class="title">
-                <h1>Resumo do carrinho</h1>
-            </div>
-            <div class="product-info">
-                <div class="info-header">
-                    <p>Quantia</p>
-                    <p>Produto</p>
-                    <p>Preço</p>
-                </div>
-                <div class="info-container">
-                    <div class="info-item" v-for="item in carrinho.state.carrinhos" :key="item.id">
-                        <p>{{ item.quantidade }}</p>
-                        <p>{{ item.nome }}</p>
-                        <p>R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="total-products">
-                <p>Total</p>
-                <p>R$ {{ carrinho.total().toFixed(2) }}</p>
-            </div>
-            <div class="finalize-continue-btns">
-                <div class="finalize-container">
-                    <button class="finalize" @click="finalizarCompra">Finalizar compra</button>
-                </div>
-                <div class="continue-container">
-                    <button class="continue" @click="continuarComprando">Continuar comprando</button>
-                </div>
-            </div>
+      <div class="product-info">
+        <div class="info-header">
+          <p>Quantia</p>
+          <p>Produto</p>
+          <p>Preço</p>
         </div>
+        <div class="info-container">
+          <div class="info-item" v-for="item in carrinho.state.carrinhos" :key="item.id">
+            <p>1</p>
+            <p>{{ item.nome }}</p>
+            <p>R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="total-products">
+        <p>Total</p>
+        <p>R$ {{ carrinho.total().toFixed(2) }}</p>
+      </div>
+
+      <div class="finalize-continue-btns">
+        <div>
+          <button @click="finalizarCompra">Finalizar compra</button>
+        </div>
+        <div>
+          <button @click="continuarComprando">Continuar comprando</button>
+        </div>
+      </div>
     </div>
-
+  </div>
 </template>
 <style scoped>
 .container-right {

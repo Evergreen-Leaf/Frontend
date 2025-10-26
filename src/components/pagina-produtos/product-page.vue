@@ -9,10 +9,8 @@ const route = useRoute()
 const produtosStore = useProdutoStore()
 
 onMounted(async () => {
-  // 👉 carrega o produto pelo ID da rota
   await produtosStore.getProduto(route.params.id)
 
-  // animação fade-in
   const elements = document.querySelectorAll('.fade-in')
 
   const observer = new IntersectionObserver(

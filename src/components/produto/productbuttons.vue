@@ -1,11 +1,17 @@
 <script setup>
+import { useCarrinhosStore } from "@/stores/carrinho";
+import { useProdutoStore } from "@/stores/produto";
+
+const carrinho = useCarrinhosStore();
+const produtoStore = useProdutoStore();
 
 </script>
+
 <template>
-    <div>
-        <button class="btn-buy">COMPRAR</button>
-        <button class="btn-add">ADICIONAR AO CARRINHO</button>
-    </div>
+  <div>
+      <button class="btn-buy">COMPRAR</button>
+      <button @click="adicionarAoCarrinho" class="btn-add">ADICIONAR AO CARRINHO</button>
+  </div>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,700;1,700&family=Inter:opsz,wght@14..32,600&family=Lexend+Deca:wght@100..900&display=swap');

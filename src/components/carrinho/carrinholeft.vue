@@ -1,40 +1,32 @@
 <script setup>
-
 import { useCarrinhosStore } from "@/stores/carrinho";
-
 const carrinho = useCarrinhosStore();
 
-// função para remover item
 const removerItem = (id) => {
-    carrinho.deleteCarrinho(id);
+  carrinho.deleteCarrinho(id);
 };
-
-
 </script>
 
-
 <template>
-
-    <div class="carrinho-left-container">
-        <div class="title">
-            <h1>Carrinho de compras</h1>
-        </div>
-        <div class="container-itens">
-            <div class="item-container" v-for="item in carrinho.state.carrinhos" :key="item.id">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>{{ item.quantidade }}</p>
-                        <p>{{ item.nome }}</p>
-                    </div>
-                    <div class="right">
-                        <p>R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
-                        <button @click="removerItem(item.id)">X</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="carrinho-left-container">
+    <div class="title">
+      <h1>Carrinho de compras</h1>
     </div>
-
+    <div class="container-itens">
+      <div class="item-container" v-for="item in carrinho.state.carrinhos" :key="item.id">
+        <div class="item-carrinho">
+          <div class="left">
+            <p>1</p>
+            <p>{{ item.nome }}</p>
+          </div>
+          <div class="right">
+            <p>R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
+            <button @click="removerItem(item.id)">X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <style scoped>
 .carrinho-left-container {
