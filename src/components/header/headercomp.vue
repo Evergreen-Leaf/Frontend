@@ -123,7 +123,6 @@ header {
   justify-content: center;
   align-items: center;
   background-color: #00000000;
-  border-radius: 0px 0px 15px 15px;
   transition: background 0.3s;
 }
 
@@ -147,6 +146,7 @@ a {
   color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 a:hover {
@@ -186,9 +186,11 @@ header.scrolled a {
   cursor: pointer;
   padding: 0;
 }
+
 .menu-lateral {
   display: none;
 }
+
 @media (max-width: 768px) {
 
   .nav,

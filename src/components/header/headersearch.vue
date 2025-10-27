@@ -7,7 +7,7 @@ defineProps({
 <template>
   <div class="container">
     <div class="container-pesquisa">
-      <div class="pesquisa" :style="{ backgroundColor: scrolled ? '#EEEEEE' : 'transparent' }">
+      <div class="pesquisa" :style="{ borderColor: scrolled ? 'rgba(0, 0, 0, 0.253)' : 'rgba(255, 255, 255, 0.493)' }">
         <input
           type="search"
           placeholder="Buscar por"
@@ -18,7 +18,7 @@ defineProps({
       </div>
     </div>
   </div>
-</template>
+</template> 
 
 <style scoped>
 .container {
@@ -43,11 +43,10 @@ defineProps({
   align-items: center;
   width: 100%;
   height: 100%;
-  border: 1.5px solid rgb(255, 255, 255);
+  border: 1.5px solid rgba(0, 0, 0, 0.253);
   padding: 0.6rem;
   border-radius: 2rem;
 }
-
 input {
   border: none;
   outline: none;
@@ -57,7 +56,9 @@ input {
   color: white;
   transition: color 0.3s, background-color 0.3s;
 }
-
+.pesquisa.scrolled {
+    border: 1px solid rgba(0, 0, 0, 0.253);
+}
 input::placeholder {
   color: white;
   transition: color 0.3s;
@@ -65,6 +66,7 @@ input::placeholder {
 
 input.scrolled {
   color: black;
+
 }
 
 input.scrolled::placeholder {

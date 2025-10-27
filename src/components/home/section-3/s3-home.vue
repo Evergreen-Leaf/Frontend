@@ -13,13 +13,13 @@
 
 .container-section3 {
     width: 100%;
-    height: 40vh;
+    height: 400px;
     background-image: url("/public/Rectangle 57.png");
     background-repeat: no-repeat;
     background-size: cover;
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 2fr;
-
+    position: relative
 }
 
 .container-text {
@@ -37,5 +37,18 @@ p {
     font-style: normal;
     font-size: 50px;
     color: #ffffff;
+}
+@media (max-width: 768px) {
+    .container-section3 {
+        display: flex;
+    }
+    .container-text {
+        display: flex;
+        text-align: center;
+    }
+    p {
+        font-size: 25px;
+    }
+    
 }
 </style>

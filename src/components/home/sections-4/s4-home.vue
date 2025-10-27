@@ -35,6 +35,7 @@ import productlist from '@/components/produto/productlist.vue';
     height: 30%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 h1 {
