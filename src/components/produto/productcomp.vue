@@ -16,21 +16,21 @@ import productlist from '@/components/produto/productlist.vue'
 onMounted(async () => {
     await produtosStore.getProductsByCategoria(route.params.name)
     await produtoStore.getProduto(router.params.id)
-  const elements = document.querySelectorAll('.fade-in')
+    const elements = document.querySelectorAll('.fade-in')
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
-          observer.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.1 }
-  )
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible')
+                    observer.unobserve(entry.target)
+                }
+            })
+        },
+        { threshold: 0.1 }
+    )
 
-  elements.forEach((el) => observer.observe(el))
+    elements.forEach((el) => observer.observe(el))
 })
 
 </script>
@@ -45,10 +45,10 @@ onMounted(async () => {
             </div>
             <div class="right-container">
                 <div class="right">
-                    <producttitle class="hidden fade-in"/>
-                    <productdescription class="hidden fade-in"/>
-                    <productprice class="hidden fade-in"/>
-                    <productbuttons class="hidden fade-in"/>
+                    <producttitle class="hidden fade-in" />
+                    <productdescription class="hidden fade-in" />
+                    <productprice class="hidden fade-in" />
+                    <productbuttons class="hidden fade-in" />
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@ onMounted(async () => {
         <div class="related-products-container">
             <h2>RELACIONADOS</h2>
             <div class="related-products-list">
-                <productlist :quantidade="4" :categoria="route.params.name"  class="hidden fade-in"/> 
+                <productlist :quantidade="4" :categoria="route.params.name" class="hidden fade-in" />
             </div>
         </div>
 
@@ -82,6 +82,7 @@ onMounted(async () => {
     background-color: #F7F7F7;
     border-radius: 8px;
     margin-bottom: 3rem;
+    border: 2px solid #00000010;
 }
 
 .left-container {
@@ -113,6 +114,7 @@ onMounted(async () => {
 }
 
 h2 {
+    margin: 10vh 0;
     font-family: "Inter Tight", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
@@ -122,7 +124,7 @@ h2 {
 
 .related-products {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -149,15 +151,58 @@ h2 {
 }
 
 .hidden {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.7s,
-    transform 0.8s;
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.7s,
+        transform 0.8s;
 }
 
 .visible {
-  opacity: 2;
-  transform: translateY(0);
+    opacity: 2;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .container-product {
+        margin-top: 10vh;
+        margin-bottom: 0;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 2px solid #00000010;
+        border-left: 0;
+        border-radius: 0;
+    }
+
+    .container-product-screen {
+        align-items: flex-start;
+        height: auto;
+    }
+
+    .left-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .left {
+        width: 100%;
+        height: auto;
+    }
+
+    .right-container {
+        width: 100%;
+        height: auto;
+        border-radius: 0px 0px 8px 8px;
+    }
+
+    .right {
+        grid-template-rows: repeat(4, auto);
+        row-gap: 1rem;
+        padding: 1rem 0;
+    }
+
 }
 </style>

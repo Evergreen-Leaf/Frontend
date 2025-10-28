@@ -112,7 +112,7 @@ header {
   width: 100%;
   height: 10vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -120,6 +120,7 @@ header {
   width: 100%;
   height: 5vh;
   display: flex;
+  position: static;
   justify-content: center;
   align-items: center;
   background-color: #00000000;
@@ -230,7 +231,7 @@ header.scrolled a {
     width: 60%;
     height: 90vh;
     background: white;
-    z-index: 2;
+    z-index: 4;
     padding: 180px 25px;
     display: flex;
     align-items: center;

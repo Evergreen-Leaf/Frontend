@@ -1,10 +1,10 @@
 <script setup>
 import { useProdutoStore } from '@/stores/produto'
-const {state} = useProdutoStore()
+const { state } = useProdutoStore()
 </script>
 
 <template>
-  <div class="descricao-wrapper" >
+  <div class="descricao-wrapper">
     <p>{{ state.selectedProduto?.descricao }}</p>
   </div>
 </template>
@@ -22,12 +22,25 @@ p {
   font-style: normal;
   white-space: normal;
   word-break: break-word;
+  text-align: justify;
+
 }
 
 .descricao-wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* melhor que center */
+  align-items: flex-start;
+  /* melhor que center */
   width: 100%;
+}
+
+@media (max-width: 1024px) {
+  p {
+    font-size: 16px;
+    width: 90%;
+  }
+  .descricao-wrapper{
+    align-items: center;
+  }
 }
 </style>
