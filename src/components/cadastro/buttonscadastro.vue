@@ -5,12 +5,11 @@ defineProps(['etapa'])
 <template>
     <div class="container">
         <div class="container-btn">
-            <button class="back" v-if="etapa === 2" @click="$emit('voltar')">VOLTAR</button>
             <button class="next" v-if="etapa === 1" @click="$emit('avancar')">PRÓXIMO</button>
             <button class="finish" v-if="etapa === 2">FINALIZAR</button>
         </div>
         <div class="container-link">
-            <router-link to="/" class="login-link">Já possui uma conta?</router-link>
+            <router-link v-if="etapa === 1" to="/login" class="login-link">Já possui uma conta?</router-link>
         </div>
     </div>
 </template>
