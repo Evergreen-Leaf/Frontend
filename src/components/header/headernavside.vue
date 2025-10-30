@@ -11,8 +11,11 @@ defineProps({
             <img v-if="!scrolled" src="/public/cart-icon.png" />
             <img v-else src="/public/cart-icon-black.png" />
         </router-link>
-        <img v-if="!scrolled" src="/public/profile-icon.png" />
-        <img v-else src="/public/profile-icon-black.png" />
+        <router-link to="/login">
+            <img v-if="!scrolled" src="/public/profile-icon.png" />
+            <img v-else src="/public/profile-icon-black.png" />
+        </router-link>
+
     </div>
 </template>
 <style scoped>
