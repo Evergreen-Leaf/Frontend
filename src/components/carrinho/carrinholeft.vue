@@ -1,4 +1,23 @@
 <script setup>
+import { useCarrinhosStore } from "@/stores/carrinho"
+import { useUsuarioStore } from "@/stores/usuario";
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const carrinhoStore = useCarrinhosStore();
+const usuarioStore = useUsuarioStore();
+
+const user = usuarioStore.state.user
+
+if (!user) {
+    router.push({'path': '/login'});
+}
+
+onMounted(() => {
+    carrinhoStore.getCarrinho(user.id);
+});
+
 </script>
 
 <template>

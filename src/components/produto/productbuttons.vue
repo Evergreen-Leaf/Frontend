@@ -1,10 +1,31 @@
 <script setup>
+import { useCarrinhosStore } from "@/stores/carrinho"
+import { useUsuarioStore } from "@/stores/usuario";
+
+const carrinhoStore = useCarrinhosStore();
+const usuarioStore = useUsuarioStore();
+
+const props = defineProps({
+    "id": {
+        type: Number,
+        required: true
+    }
+});
+
+function addToCart() {
+    const user = usuarioStore.state.user;
+    if(user) {
+        carrinhoStore.addItem(user.id,props.id);
+    } else {
+        alert("Você precisa estar logado para adicionar itens ao carrinho.");
+    }
+}
 
 </script>
 <template>
     <div>
         <button class="btn-buy">COMPRAR</button>
-        <button class="btn-add">ADICIONAR AO CARRINHO</button>
+        <button @click="addToCart" class="btn-add">ADICIONAR AO CARRINHO</button>
     </div>
 </template>
 <style scoped>

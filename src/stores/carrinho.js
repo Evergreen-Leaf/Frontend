@@ -1,4 +1,4 @@
-import { CarrinhosService } from "@/services";
+import CarrinhosService from "@/services/carrinho";
 import { defineStore } from "pinia";
 import { reactive } from "vue";
 
@@ -12,22 +12,10 @@ export const useCarrinhosStore = defineStore("carrinhos", () => {
         error: null,
     })
 
-    const getCarrinhos = async () => {
-        state.loading = true;
-        try {
-            const response = await CarrinhosService.getCarrinhos();
-            state.Carrinhos = response.data.results;
-        } catch (error) {
-            state.error = error;
-        } finally {
-            state.loading = false;
-        }
-    }
-
     const getCarrinho = async (id) => {
         state.loading = true;
         try{
-            const response  = await CarrinhosService.getCarrinhos(id);
+            const response  = await CarrinhosService.getCarrinho(id);
             state.selectedCarrinho = response.data;
             return response;
         }
@@ -39,11 +27,11 @@ export const useCarrinhosStore = defineStore("carrinhos", () => {
         }
     }
 
-    const createCarrinho = async (data) => {
+    const addItem = async (UserId, ProductId) => {
         state.loading = true;
         try {
-            const response = await CarrinhosService.createCarrinho(data);
-            state.carrinho.push(response.data);
+            const response = await CarrinhosService.addItem(UserId, ProductId);
+            state.selectedCarrinho.push(response.data);
             return response;
         } catch (error) {
             state.error = error;
@@ -69,9 +57,8 @@ export const useCarrinhosStore = defineStore("carrinhos", () => {
 
     return {
         state,
-        getCarrinhos,
         getCarrinho,
-        createCarrinho,
+        addItem,
         deleteCarrinho,
     }
 

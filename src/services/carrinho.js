@@ -1,29 +1,25 @@
 import api from "@/plugins/axios";
 
 class CarrinhosService {
-    async getCarrinhos() {
-        try {
-            const response = await api.get(`/carrinhos/`);
-            return response;
-        } catch (error) {
-            console.error(error);
-            return error;
-        }
-    }
-
     async getCarrinho(id) {
         try {
-            const response = await api.get(`/carrinhos/${id}/`);
-            return response;
+            const response = await api.get(`/usuarios/${id}`);
+            return { data: response.data.carrinho  };
         } catch (error) {
             console.error(error);
             return error;
         }
     }
 
-    async createCarrinho(data) {
+    async addItem(userId, produtoId) {
         try {
-            const response = await api.post(`/carrinhos/`, data);
+            const data = await this.getCarrinho(userId);
+
+            const carrinho = {
+                produto: (data.produto)? [...data.produto, produtoId] : [produtoId],
+            }
+
+            const response = await api.patch(`/usuarios/${userId}/`, {carrinho});
             return response;
         } catch (error) {
             console.error(error);
