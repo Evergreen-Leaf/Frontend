@@ -22,12 +22,10 @@ onMounted(async () => {
     <div class="title">
       <h1>CATEGORIAS</h1>
     </div>
+
     <div class="classes">
       <div class="item" v-for="categoria in categorias" :key="categoria.id">
-        <div
-          @click="$router.push(`/pagina-produto/${categoria.name.toLowerCase()}`)"
-          class="card"
-        >
+        <div @click="$router.push(`/pagina-produto/${categoria.name.toLowerCase()}`)" class="card">
           <img :src="categoria.image" :alt="categoria.name" />
         </div>
       </div>
@@ -54,13 +52,21 @@ onMounted(async () => {
 }
 
 .classes {
-  height: 100%;
+  width: 100%;
+  max-width: 100%;
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: center;
   gap: 2rem;
-  margin-top: 1.5em;
+  padding: 0 1rem;
+}
+
+.item {
+  margin: 1.5rem 0 3rem 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.item:hover {
+  transform: scale(1.05);
 }
 
 .item {
@@ -70,24 +76,26 @@ onMounted(async () => {
   justify-content: center;
 }
 
-.card {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
 .card img {
   width: 100%;
   height: auto;
+  display: block;
+}
+
+.classes::-webkit-scrollbar {
+  height: 8px;
+}
+
+.classes::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
 }
 
 @media (max-width: 1024px) {
   .title h1 {
     font-size: 32px;
   }
+
   .classes {
     gap: 1.5rem;
   }
@@ -97,9 +105,25 @@ onMounted(async () => {
   .title h1 {
     font-size: 28px;
   }
-  .classes{
-      flex-wrap: wrap;
+
+  .classes {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    padding: 0 1rem;
   }
+
+  .classes>.item {
+    flex: 0 0 auto;
+  }
+
   .item {
     flex: 1 1 150px;
   }
@@ -109,6 +133,7 @@ onMounted(async () => {
   .title h1 {
     font-size: 24px;
   }
+
   .item {
     flex: 1 1 120px;
   }

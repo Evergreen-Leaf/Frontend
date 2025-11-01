@@ -58,8 +58,9 @@ onMounted(async () => {
     height: 30vh;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     margin-bottom: 2rem;
+    margin-top: 5%
 }
 
 .container-products-title {

@@ -1,4 +1,10 @@
 <script setup>
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+import headerlogo from './headerlogo.vue'
+import headernav from './headersearch.vue'
+import headernavside from './headernavside.vue'
+import hamburguerbutton from './hamburguerbutton.vue'
+
 const props = defineProps({
   forceScrolled: {
     type: Boolean,
@@ -6,27 +12,22 @@ const props = defineProps({
   }
 })
 
-// agora você acessa com props.forceScrolled
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import headerlogo from './headerlogo.vue'
-import headernav from './headersearch.vue'
-import headernavside from './headernavside.vue'
-import hamburguerbutton from './hamburguerbutton.vue'
-
 const isScrolled = ref(false)
+const menuAberto = ref(false)
 
 const handleScroll = () => {
-  if (!props.forceScrolled) { // aqui usamos props.forceScrolled
+  // Se o menu estiver aberto, não altera o estado scrolled
+  if (menuAberto.value) return
+
+  if (!props.forceScrolled) {
     isScrolled.value = window.scrollY > 50
   }
 }
 
 onMounted(() => {
-  // Se o header for forçado a scrolled via prop, marca imediatamente
   if (props.forceScrolled) {
     isScrolled.value = true
   } else {
-    // define o estado inicial com base na rolagem atual
     isScrolled.value = window.scrollY > 50
   }
 
@@ -37,16 +38,16 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-const menuAberto = ref(false)
-
 const AbrirMenu = () => {
   menuAberto.value = !menuAberto.value
 }
-// Quando menu abre, o header fica scrolled
+
+// Quando o menu abre, o header fica scrolled e só volta ao normal se o menu fechar e a rolagem for pequena
 watch(menuAberto, (val) => {
   if (val) {
     isScrolled.value = true
   } else {
+    // Só volta ao normal se não estiver forçado e a rolagem for pequena
     isScrolled.value = props.forceScrolled ? true : window.scrollY > 50
   }
 })

@@ -6,7 +6,7 @@ defineProps({
 <template>
     <div @click="$router.push('/')">
         <img v-if="!scrolled" src="/public/logo.png" />
-        <img v-else src="/public/logo-colorida.png" />
+        <img v-else id="colorida" src="/public/logo-colorida.png" />
     </div>
 </template>
 <style scoped>
@@ -16,5 +16,6 @@ div {
     justify-content: center;
     align-items: center;
 }
-
+#colorida {
+    transform: scale(0.89);}
 </style>
