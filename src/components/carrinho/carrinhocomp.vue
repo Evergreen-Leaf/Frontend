@@ -40,4 +40,12 @@ import carrinhoright from './carrinhoright.vue';
     display: flex;
     border: 1.5px solid rgba(0, 0, 0, 0.2);
 }
+@media (max-width: 1024px) {
+    .container-carrinho {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
 </style>

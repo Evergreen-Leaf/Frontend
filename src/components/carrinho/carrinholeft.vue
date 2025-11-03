@@ -203,4 +203,21 @@ button {
     font-size: 15px;
     cursor: pointer;
 }
+@media (max-width: 1024px) {
+    .carrinho-left-container {
+        width: 100%;
+        height: auto;
+        border-radius: 0px;
+    }
+    button{
+        scale: 0.8;
+        border-radius: 20px;
+    }
+    .right{
+        margin: 0px;
+    }
+    p{
+        font-size: 16px;
+    }
+}
 </style>
