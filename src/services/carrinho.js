@@ -16,7 +16,7 @@ class CarrinhosService {
             const data = await this.getCarrinho(userId);
 
             const carrinho = {
-                produto: (data.produto)? [...data.produto, produtoId] : [produtoId],
+                produtos: (data.produto)? [...data.produto, produtoId] : [produtoId],
             }
 
             const response = await api.patch(`/usuarios/${userId}/`, {carrinho});
@@ -39,13 +39,7 @@ class CarrinhosService {
 
     async deleteItem(userId, produtoId) {
         try {
-            const data = await this.getCarrinho(userId);
-
-            const carrinho = {
-                produto: data.data.produto.filter(item => item.id !== produtoId),
-            }
-
-            const response = await api.delete(`/usuarios/${userId}/`, {carrinho});
+            const response = await api.delete(`/usuarios/${userId}/carrinho/produtos/${produtoId}/` );
             return response;
         } catch (error) {
             console.error(error);

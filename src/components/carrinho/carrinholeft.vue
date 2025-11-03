@@ -40,6 +40,9 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
+            <div v-if="!carrinhoStore.state.itensCarrinho[0]">
+                <h2>Não há itens no carrinho</h2>
+            </div>
             
 
         </div>
