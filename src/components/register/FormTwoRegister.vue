@@ -25,7 +25,7 @@ const handleSubmit = () => {
 <template>
   <div class="form-container">
     <div class="logo">
-      <img src="/public/Logo.png" alt="Evergreen Logo">
+      <img src="/public/Logo.png" alt="Evergreen Logo" @click="$router.push('/')" style="cursor: pointer;">
       <p>FAÇA SEU CADASTRO</p>
     </div>
 
@@ -68,7 +68,7 @@ const handleSubmit = () => {
       </button>
 
       <div class="ja-possui">
-        <router-link to="/loginn">Já possui conta?</router-link>
+        <router-link to="/login">Já possui conta?</router-link>
       </div>
     </div>
   </div>

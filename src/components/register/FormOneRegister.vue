@@ -19,7 +19,7 @@ const handleNext = () => {
 
 <template>
   <div class="form-container">
-    <div class="logo">
+    <div class="logo" @click="$router.push('/')" style="cursor: pointer;">
       <img src="/public/Logo.png" alt="Evergreen Logo">
       <p>FAÇA SEU CADASTRO</p>
     </div>

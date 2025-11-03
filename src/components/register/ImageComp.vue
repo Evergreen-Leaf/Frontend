@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <section class="image"></section>
+    <section  class="image"></section>
 </template>
 
 <style scoped>

@@ -23,7 +23,7 @@ const submitLogin = async () => {
     <section class="login">
         <div class="container">
             <div class="logo">
-                <img src="/public/Logo.png" alt="Evergreen Logo">
+                <img src="/public/Logo.png" alt="Evergreen Logo" @click="$router.push('/')" style="cursor: pointer;">
                 <p>BEM VINDO DE VOLTA!</p>
             </div>
 

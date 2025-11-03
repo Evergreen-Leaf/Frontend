@@ -1,9 +1,16 @@
 <script setup>
-import { useRoute } from 'vue-router';
+import { useUsuarioStore } from '@/stores/usuario';
+
+const UsuarioStore = useUsuarioStore();
 
 defineProps({
     scrolled: Boolean
 })
+
+function handleLogout() {
+    UsuarioStore.logout();
+}
+
 </script>
 
 <template>
@@ -12,11 +19,13 @@ defineProps({
             <img v-if="!scrolled" src="/public/cart-icon.png" />
             <img v-else src="/public/cart-icon-black.png" />
         </router-link>
-        <router-link to="/login">
+        <router-link v-if="!UsuarioStore.state.user" to="/login">
             <img v-if="!scrolled" src="/public/profile-icon.png" />
             <img v-else src="/public/profile-icon-black.png" />
         </router-link>
-
+        <button @click="handleLogout" v-else style="cursor: pointer;">
+            Logout
+        </button>
     </div>
 </template>
 
