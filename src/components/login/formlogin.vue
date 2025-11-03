@@ -1,8 +1,39 @@
+<script setup> 
+
+
+import { computed } from 'vue';
+import { useUsuarioStore } from '@/stores/usuario';
+import { useRouter } from 'vue-router';
+
+const UsuarioStore = useUsuarioStore();
+
+const router = useRouter();
+
+const submitForm = async () => {
+    try {
+        await UsuarioStore.login(form.value.email, form.value.password);
+        router.push('/');
+        alert('Login realizado com sucesso!');
+    } catch (error) {
+        alert('Erro ao logar:', error);
+    }
+};
+
+const form = computed(() => {
+    return {
+        email: '',
+        password: '',
+    };
+});
+
+
+</script>
+
 <template>
     <div class="container">
-        <form action="">
-            <input type="email" name="email" placeholder="Email" />
-            <input type="password" name="senha" placeholder="Senha" />
+        <form @submit.prevent="submitForm">
+            <input  v-model="form.email" type="email" name="email" placeholder="Email" />
+            <input  v-model="form.password" type="password" name="senha" placeholder="Senha" />
         </form>
     </div>
 </template>

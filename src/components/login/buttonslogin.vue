@@ -1,7 +1,35 @@
+<script setup>
+
+import { computed } from 'vue';
+import { useUsuarioStore } from '@/stores/usuario';
+import { useRouter } from 'vue-router';
+
+const UsuarioStore = useUsuarioStore();
+
+const router = useRouter();
+
+const submitForm = async () => {
+    try {
+        await UsuarioStore.login(form.value.email, form.value.password);
+        router.push('/');
+        alert('Login realizado com sucesso!');
+    } catch (error) {
+        alert('Erro ao logar:', error);
+    }
+};
+
+const form = computed(() => {
+    return {
+        email: '',
+        password: '',
+    };
+});
+
+</script>
 <template>
     <div class="container">
         <div class="container-btn">
-            <button>ENTRAR</button>
+            <button @click="submitForm" >ENTRAR</button>
         </div>
         <div class="container-link">
             <router-link to="/cadastro" class="cadastro-link">Não possui uma conta?</router-link>
