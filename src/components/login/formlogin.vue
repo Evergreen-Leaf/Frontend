@@ -1,7 +1,7 @@
-<script setup> 
-
+<script setup>
 
 import { computed } from 'vue';
+import { useUsuarioStore } from '@/stores/usuario';
 import { useRouter } from 'vue-router';
 
 const UsuarioStore = useUsuarioStore();
@@ -35,10 +35,19 @@ const form = computed(() => {
             <input  v-model="form.password" type="password" name="senha" placeholder="Senha" />
         </form>
     </div>
+     <div class="container-2">
+        <div class="container-btn">
+            <button @click="submitForm" >ENTRAR</button>
+        </div>
+        <div class="container-link">
+            <router-link to="/cadastro" class="cadastro-link">Não possui uma conta?</router-link>
+        </div>
+    </div>
 </template>
 <style scoped>
 .container {
     width: 100%;
+    height: 50%;
 }   
 
 input {
@@ -68,5 +77,39 @@ form {
     width: 100%;
     height: 100%;
 
+}
+
+.container-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 30%;
+    margin-top: 2rem;
+}
+
+.container-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    width: 40%;
+    height: 3.5rem;
+    background-color: #68A239;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.cadastro-link {
+    font-size: 15px;
+    color: #9E9E9E;
 }
 </style>
