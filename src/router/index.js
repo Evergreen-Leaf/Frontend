@@ -4,8 +4,7 @@ import cadastroview from '@/views/cadastroview.vue'
 import homeview from '@/views/homeview.vue'
 import Productview from '@/views/productview.vue'
 import Productpageview from '@/views/productpageview.vue'
-import loginnview from '@/views/loginnview.vue'
-import registerview from '@/views/RegisterView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,16 +18,6 @@ const router = createRouter({
       path: '/login',
       name: 'Login',
       component: loginview
-    },
-    {
-      path: '/loginn',
-      name: 'Loginn',
-      component: loginnview
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: registerview
     },
     {
       path: '/cadastro',
