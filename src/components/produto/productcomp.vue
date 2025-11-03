@@ -57,7 +57,7 @@ onMounted(async () => {
             <h2>RELACIONADOS</h2>
             <div class="related-products-list">
                 <productlist :quantidade="4" :categoria="router.params.name" class="hidden fade-in" />
-            </div>
+o            </div>
         </div>
 
     </div>
