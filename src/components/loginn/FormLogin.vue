@@ -70,8 +70,7 @@
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 90%;
+    
 }
 
 .logo {
@@ -93,9 +92,7 @@
 }
 
 .form {
-    width: 100%;
-    margin-top: 30%;
-}
+    width: 100%;}
 
 .input-area {
     display: flex;
@@ -110,6 +107,7 @@
 }
 
 .input-icon {
+
     position: absolute;
     left: 16px;
     top: 50%;

@@ -16,4 +16,9 @@ main {
   display: grid;
   grid-template-columns: 3fr 1.5fr;
 }
+@media (max-width: 1024px) {
+  main {
+    display: flex;
+    justify-content: center;
+}}  
 </style>

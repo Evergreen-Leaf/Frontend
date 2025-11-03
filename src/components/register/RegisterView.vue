@@ -16,4 +16,11 @@ main {
   display: grid;
   grid-template-columns: 3fr 1.5fr;
 }
+@media (max-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  
+}
 </style>

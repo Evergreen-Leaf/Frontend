@@ -82,6 +82,9 @@ const handleSubmit = () => {
   padding: 40px 20px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Animação para ir para a direita (próximo) */

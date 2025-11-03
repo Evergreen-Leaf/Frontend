@@ -193,7 +193,7 @@ const handleNext = () => {
   width: 100%;
   padding: 14px 16px 14px 48px;
   border: 2px solid #E5E7EB;
-  border-radius: 10px 10px 10px 20px;
+  border-radius: 15px;
   font-family: 'Lexend Deca', sans-serif;
   font-size: 14px;
   color: #374151;
@@ -233,9 +233,9 @@ const handleNext = () => {
 .date-select {
   padding: 14px 12px;
   border: 2px solid #E5E7EB;
-  border-radius: 10px 10px 10px 20px;
+  border-radius: 15px;
   font-family: 'Lexend Deca', sans-serif;
-  font-size: 14px;
+  font-size: 14px;  
   color: #374151;
   background-color: #ffffff;
   cursor: pointer;

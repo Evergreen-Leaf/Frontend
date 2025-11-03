@@ -1,4 +1,5 @@
 <script setup>
+
 const props = defineProps({
   formData: {
     type: Object,
@@ -31,57 +32,31 @@ const handleSubmit = () => {
     <div class="form">
       <div class="input-area">
         <div class="input-wrapper">
-          <input
-            type="text"
-            placeholder="Estado"
-            :value="formData.estado"
-            @input="updateField('estado', $event.target.value)"
-          />
+          <input type="text" placeholder="Estado" :value="formData.estado"
+            @input="updateField('estado', $event.target.value)" />
         </div>
 
         <div class="input-wrapper">
-          <input
-            type="text"
-            placeholder="Cidade"
-            :value="formData.cidade"
-            @input="updateField('cidade', $event.target.value)"
-          />
+          <input type="text" placeholder="Cidade" :value="formData.cidade"
+            @input="updateField('cidade', $event.target.value)" />
         </div>
 
         <div class="input-wrapper">
-          <input
-            type="text"
-            placeholder="Rua"
-            :value="formData.rua"
-            @input="updateField('rua', $event.target.value)"
-          />
+          <input type="text" placeholder="Rua" :value="formData.rua" @input="updateField('rua', $event.target.value)" />
         </div>
 
         <div class="input-wrapper">
-          <input
-            type="text"
-            placeholder="CEP"
-            :value="formData.cep"
-            @input="updateField('cep', $event.target.value)"
-          />
+          <input type="text" placeholder="CEP" :value="formData.cep" @input="updateField('cep', $event.target.value)" />
         </div>
 
         <div class="input-wrapper">
-          <input
-            type="text"
-            placeholder="Número"
-            :value="formData.numero"
-            @input="updateField('numero', $event.target.value)"
-          />
+          <input type="text" placeholder="Número" :value="formData.numero"
+            @input="updateField('numero', $event.target.value)" />
         </div>
 
         <div class="input-wrapper">
-          <input
-            type="text"
-            placeholder="Complemento"
-            :value="formData.complemento"
-            @input="updateField('complemento', $event.target.value)"
-          />
+          <input type="text" placeholder="Complemento" :value="formData.complemento"
+            @input="updateField('complemento', $event.target.value)" />
         </div>
       </div>
 
@@ -93,7 +68,7 @@ const handleSubmit = () => {
       </button>
 
       <div class="ja-possui">
-          <router-link  to="/login">Já possui conta?</router-link>
+        <router-link to="/loginn">Já possui conta?</router-link>
       </div>
     </div>
   </div>
@@ -155,7 +130,7 @@ const handleSubmit = () => {
   width: 100%;
   padding: 16px;
   border: 2px solid #E5E7EB;
-  border-radius: 10px 10px 10px 20px;
+  border-radius: 15px;
   font-family: 'Lexend Deca', sans-serif;
   font-size: 15px;
   color: #374151;
@@ -236,12 +211,12 @@ const handleSubmit = () => {
   color: #9E9E9E;
   font-weight: 800;
   cursor: pointer;
-    text-decoration: none;
+  text-decoration: none;
 }
 
-a{
-    color: #9E9E9E;
-    font-weight: 800;
-    text-decoration: none;
+a {
+  color: #9E9E9E;
+  font-weight: 800;
+  text-decoration: none;
 }
 </style>

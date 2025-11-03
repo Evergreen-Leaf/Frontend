@@ -13,4 +13,9 @@
   height: 100%;
   width: 100%;
 }
+@media (max-width: 1024px) {
+  .image {
+    display: none;
+  }
+}
 </style>
