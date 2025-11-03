@@ -26,10 +26,10 @@ onMounted(async () => {
 })
 </script>
 <template>
-<s1home  class="hidden fade-in"/>
-<s2home  class="hidden fade-in"/>
-<s3home  class="hidden fade-in"/>
-<s4Home  class="hidden fade-in"/>
+<s1home id="s1" class="hidden fade-in"/>
+<s2home id="s2" class="hidden fade-in"/>
+<s3home id="s3" class="hidden fade-in"/>
+<s4Home id="s4" class="hidden fade-in"/>
 <footercomp class="hidden fade-in"/>
 </template>
 <style scoped>
