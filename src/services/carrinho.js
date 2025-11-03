@@ -37,6 +37,22 @@ class CarrinhosService {
         }
     }
 
+    async deleteItem(userId, produtoId) {
+        try {
+            const data = await this.getCarrinho(userId);
+
+            const carrinho = {
+                produto: data.data.produto.filter(item => item.id !== produtoId),
+            }
+
+            const response = await api.delete(`/usuarios/${userId}/`, {carrinho});
+            return response;
+        } catch (error) {
+            console.error(error);
+            return error;
+        }
+    }
+
 }
 
 export default new CarrinhosService();

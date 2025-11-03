@@ -18,6 +18,7 @@ onMounted(() => {
     carrinhoStore.getCarrinho(user.id);
 });
 
+
 </script>
 
 <template>
@@ -28,87 +29,14 @@ onMounted(() => {
         </div>
         <div class="container-itens">
 
-            <div class="item-container">
+            <div v-for="item in carrinhoStore.state.itensCarrinho" :key="item.id" class="item-container">
                 <div class="item-carrinho">
                     <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
+                        <span>{{ item.nome }}</span>
                     </div>
                     <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
+                        <span>R$ {{ item.preco }}</span>
+                        <button @click="carrinhoStore.deleteItem(item.id, user.id)">X</button>
                     </div>
                 </div>
             </div>
