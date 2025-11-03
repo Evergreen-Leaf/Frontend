@@ -1,4 +1,22 @@
 <script setup>
+import { ref } from 'vue';
+import { useUsuarioStore } from '@/stores/usuario';
+import { useRouter } from 'vue-router';
+
+const email = ref('');
+const senha = ref('');
+const UsuarioStore = useUsuarioStore();
+const router = useRouter();
+
+const submitLogin = async () => {
+    try {
+        await UsuarioStore.login(email.value, senha.value);
+        router.push('/');
+        alert('Login realizado com sucesso!');
+    } catch (error) {
+        alert('Erro ao logar: ' + error);
+    }
+};
 </script>
 
 <template>
@@ -34,7 +52,7 @@
                     </div>
                 </div>
 
-                <button class="btn-entrar">
+                <button class="btn-entrar" @click="submitLogin">
                     ENTRAR
                 </button>
 

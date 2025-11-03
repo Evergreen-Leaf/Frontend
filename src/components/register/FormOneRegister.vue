@@ -112,8 +112,8 @@ const handleNext = () => {
         <input
           type="password"
           placeholder="Senha"
-          :value="formData.senha"
-          @input="updateField('senha', $event.target.value)"
+          :value="formData.password"
+          @input="updateField('password', $event.target.value)"
         />
       </div>
 

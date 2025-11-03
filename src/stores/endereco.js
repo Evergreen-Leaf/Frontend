@@ -35,7 +35,7 @@ export const useEnderecoStore = defineStore("enderecos", () => {
             return response;
         } catch (error) {
             state.error = error;
-            console.error(error);
+            throw error;
         } finally {
             state.loading = false;
         }

@@ -2,6 +2,15 @@
 import { ref } from 'vue';
 import FormStep1 from './FormOneRegister.vue';
 import FormStep2 from './FormTwoRegister.vue';
+import { useUsuariosStore } from '@/stores/usuarios';
+import { useUsuarioStore } from '@/stores/usuario';
+import { useEnderecoStore } from '@/stores/endereco';
+import { useRouter } from 'vue-router';
+
+const UsuariosStore = useUsuariosStore();
+const EnderecoStore = useEnderecoStore();
+const UsuarioStore = useUsuarioStore();
+const router = useRouter();
 
 const currentStep = ref(1);
 const formData = ref({
@@ -12,7 +21,7 @@ const formData = ref({
   ano: '',
   cpf: '',
   email: '',
-  senha: '',
+  password: '',
   telefone: '',
   // Etapa 2
   estado: '',
@@ -23,9 +32,20 @@ const formData = ref({
   complemento: ''
 });
 
-const nextStep = () => {
+const nextStep = async () => {
   if (currentStep.value < 2) {
-    currentStep.value++;
+    try {
+      await UsuariosStore.createUsuario(formData.value);
+      currentStep.value++;
+    } catch (error) {
+      if (error.response.status === 500) {
+        alert('Erro no servidor. Tente novamente mais tarde.');
+        return;
+      }
+      for (const key in error.response.data) {
+        alert(`${key}: ${error.response.data[key]}`);
+      }
+    }
   }
 };
 
@@ -35,30 +55,36 @@ const prevStep = () => {
   }
 };
 
-const handleSubmit = () => {
-  console.log('Cadastro completo:', formData.value);
-  // Aqui você pode enviar os dados para o backend
+const submitForm = async () => {
+  try {
+    formData.value.user = UsuarioStore.state.user.id;
+    await EnderecoStore.createEndereco(formData.value);
+    alert('Cadastro e login realizado com sucesso!');
+    router.push('/');
+  } catch (error) {
+    if (error.response.status === 500) {
+      alert('Erro no servidor. Tente novamente mais tarde.');
+      return;
+    }
+    for (const key in error.response.data) {
+      alert(`${key}: ${error.response.data[key]}`);
+    }
+  }
 };
+
+if (UsuarioStore.state.user) {
+  currentStep.value = 2;
+}
 </script>
 
 <template>
   <section class="cadastro">
     <div class="container">
       <Transition :name="currentStep === 2 ? 'slide-left' : 'slide-right'" mode="out-in">
-        <FormStep1 
-          v-if="currentStep === 1"
-          key="step1"
-          v-model:formData="formData"
-          @next="nextStep"
-        />
-        
-        <FormStep2 
-          v-else-if="currentStep === 2"
-          key="step2"
-          v-model:formData="formData"
-          @prev="prevStep"
-          @submit="handleSubmit"
-        />
+        <FormStep1 v-if="currentStep === 1" key="step1" v-model:formData="formData" @next="nextStep" />
+
+        <FormStep2 v-else-if="currentStep === 2" key="step2" v-model:formData="formData" @prev="prevStep"
+          @submit="submitForm" />
       </Transition>
     </div>
   </section>

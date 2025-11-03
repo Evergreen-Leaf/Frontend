@@ -22,8 +22,13 @@ class UsuariosService {
     }
 
     async createUsuario(data) {
+        try {
             const response = await api.post(`/usuarios/`, data);
             return response;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
     }
     
     async deleteUsuario(id) {
