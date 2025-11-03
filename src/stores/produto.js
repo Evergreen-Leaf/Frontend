@@ -24,6 +24,48 @@ export const useProdutoStore = defineStore("produtos", () => {
         }
     }
 
+    const getProductsByCategoria = async (categoria) => {
+        state.loading = true;
+        state.produtos = []; // Limpa os produtos antes de carregar novos
+        try {
+            let currentPage = 1;
+            let totalPages = 1;
+            let allProducts = [];
+
+            do {
+                const response = await ProdutosService.getProdutos(currentPage);
+                console.log(`Buscando página ${currentPage}:`, response.data);
+                
+                if (response?.data?.results && Array.isArray(response.data.results)) {
+                    // Adiciona os produtos da página atual que correspondem à categoria
+                    const filteredProducts = response.data.results.filter(produto =>
+                        produto.categoria.some(cat =>
+                            cat.nomecategoria.toLowerCase() === categoria.toLowerCase()
+                        )
+                    );
+                    allProducts.push(...filteredProducts);
+                    
+                    // Atualiza informações de paginação
+                    totalPages = response.data.total_pages;
+                    currentPage++;
+                } else {
+                    console.error("Resposta inesperada da API:", response);
+                    break;
+                }
+            } while (currentPage <= totalPages);
+
+            state.produtos = allProducts;
+            console.log(`Total de produtos encontrados para categoria ${categoria}:`, allProducts.length);
+            return state.produtos;
+        } catch (error) {
+            state.error = error;
+            console.error("Erro ao buscar produtos por categoria:", error);
+            return [];
+        } finally {
+            state.loading = false;
+        }
+    }
+
     const getProduto = async (id) => {
         state.loading = true;
         try{
@@ -52,7 +94,6 @@ export const useProdutoStore = defineStore("produtos", () => {
             state.loading = false;
         }
     }
-
     const deleteProduto = async (id) => {
         state.loading = true;
         try {
@@ -67,12 +108,15 @@ export const useProdutoStore = defineStore("produtos", () => {
         }
     }
 
+
+
     return {
         state,
         getProdutos,
         getProduto,
         createProduto,
         deleteProduto,
+        getProductsByCategoria
     }
 
 });

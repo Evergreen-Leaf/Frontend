@@ -17,14 +17,17 @@ const props = defineProps({
 .container-info {
     display: grid;
     grid-template-rows: 0.6fr 1fr 0.3fr 0.6fr;
-    width: 90%;
+    width: 100%;
     height: 40%;
+    background-color: #F7F7F7;
+    border-radius: 0 0 12px 12px ;
 }
-
+p{
+    margin: 0 1.5rem;
+}
 .title {
     margin-top: 1rem;
     font-size: 18px;
-    font-weight: bold;
 }
 .description {
     font-size: 14px;
@@ -32,7 +35,6 @@ const props = defineProps({
 }
 .price {
     font-size: 18px;
-    font-weight: bold;
     grid-row: 4/4;
 }
 </style>

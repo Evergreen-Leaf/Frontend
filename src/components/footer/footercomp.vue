@@ -53,6 +53,7 @@ footer {
         linear-gradient(to bottom, #EEEEEE, transparent),
         url('/public/Footer-background.png');
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: flex-end;
     background-repeat: no-repeat;

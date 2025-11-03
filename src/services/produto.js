@@ -1,9 +1,9 @@
 import api from "@/plugins/axios";
 
 class ProdutosService {
-    async getProdutos() {
+    async getProdutos(page = 1) {
         try {
-            const response = await api.get(`/produtos/`);
+            const response = await api.get(`/produtos/?page=${page}`);
             return response;
         } catch (error) {
             console.error(error);
