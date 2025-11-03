@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import loginnview from '@/views/loginnview.vue'
+import loginview from '@/views/loginview.vue'
 import cadastroview from '@/views/cadastroview.vue'
 import homeview from '@/views/homeview.vue'
 import productview from '@/views/productview.vue'
@@ -19,7 +19,7 @@ const router = createRouter({
      {
       path: '/login',
       name: 'Login',
-      component: loginnview
+      component: loginview
     },
     {
       path: '/register',
