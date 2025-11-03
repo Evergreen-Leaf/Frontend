@@ -4,7 +4,8 @@ import { ref } from 'vue'
 import titlecadastro from '@/components/cadastro/titlecadastro.vue'
 import formcadastro from '@/components/cadastro/formcadastro.vue'
 import enderecoform from '@/components/cadastro/enderecoform.vue'
-import buttonscadastro from '@/components/cadastro/buttonscadastro.vue'
+
+
 const etapa = ref(1)
 
 function avancar() {
@@ -26,17 +27,9 @@ function voltar() {
 
         <transition name="fade" mode="out-in">
           <div class="form" :key="etapa">
-            <component :is="etapa === 1 ? formcadastro : enderecoform" />
+            <component @avancar="avancar" @voltar="voltar" :is="etapa === 1 ? formcadastro : enderecoform" />
           </div>
         </transition>
-
-        <div class="buttons">
-          <buttonscadastro
-            :etapa="etapa"
-            @avancar="avancar"
-            @voltar="voltar"
-          />
-        </div>
       </div>
     </div>
   </div>
@@ -80,6 +73,7 @@ function voltar() {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .buttons {
@@ -96,4 +90,5 @@ function voltar() {
 .fade-leave-to {
   opacity: 0;
 }
+
 </style>

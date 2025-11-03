@@ -14,31 +14,36 @@ import s2HomeClasses from './s2-home-classes.vue';
 </template>
 <style scoped>
 .container {
-    width: 100%;
-    height: 90vh;
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 2fr 1fr 6fr 2fr;
-    background-color: #EEEEEE;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        align-items: center;
+        padding: 3.5rem 0;
+        background-color: #EEEEEE;
 }
 
 .s2home-info {
-    margin-left: 4em;
-    display: flex;
-    justify-content: center;
-    width: 95%;
-    grid-row: 2;
+        display: flex;
+        justify-content: center;
+        width: 95%;
+        max-width: 1200px;
 }
 
 .s2home-classes {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    width: 100%;
-    height: 100%;
-    grid-row: 4;
+        width: 95%;
+        max-width: 1200px;
+        margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+    .s2home-info, .s2home-classes {
+        width: 95%;
+        padding: 0 1rem;
+    }
 }
 </style>

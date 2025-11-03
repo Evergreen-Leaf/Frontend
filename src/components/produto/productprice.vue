@@ -80,4 +80,9 @@ button {
     background-color: #ffffff00;
     color: rgb(0, 0, 0);
 }
+@media (max-width: 1100px) {
+    .price {
+        font-size: 20px;
+    }
+}
 </style>

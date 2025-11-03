@@ -10,9 +10,7 @@ export default defineConfig([
     name: 'app/files-to-lint',
     files: ['**/*.{js,mjs,jsx,vue}'],
     rules: {
-      'vue/multi-word-component-names': ['error', {
-        'ignores': ['default']
-      }],
+      'vue/multi-word-component-names': 'off'
     }
   },
 
