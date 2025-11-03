@@ -18,7 +18,6 @@ defineProps({
         </router-link>
 
     </div>
-  </div>
 </template>
 
 <style scoped>
