@@ -6,6 +6,7 @@ import productview from '@/views/productview.vue'
 import productpageview from '@/views/productpageview.vue'
 import carrinhoview from '@/views/carrinhoview.vue' 
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
