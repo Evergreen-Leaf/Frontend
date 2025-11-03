@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import loginview from '@/views/loginview.vue'
 import cadastroview from '@/views/cadastroview.vue'
 import homeview from '@/views/homeview.vue'
-import Productview from '@/views/productview.vue'
-import Productpageview from '@/views/productpageview.vue'
+import productview from '@/views/productview.vue'
+import productpageview from '@/views/productpageview.vue'
+import carrinhoview from '@/views/carrinhoview.vue' 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,13 +27,19 @@ const router = createRouter({
     {
     path: '/produto/:id',
     name: 'Produto',
-    component: Productview,
+    component: productview,
   },
   {
     path: '/pagina-produto/:name',
     name: 'pagina-produto',
-    component: Productpageview,
+    component: productpageview,
   },
+  {
+    path: '/carrinho/',
+    name: 'pagina-carrinho',
+    component: carrinhoview,
+  },
+
   ],
   
   scrollBehavior(to, from, savedPosition) {

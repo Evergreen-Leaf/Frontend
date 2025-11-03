@@ -1,7 +1,6 @@
 <script setup>
 import titlelogin from '@/components/login/titlelogin.vue';
 import formlogin from '@/components/login/formlogin.vue';
-import buttonslogin from '@/components/login/buttonslogin.vue';
 </script>
 <template>
   <div class="background">
@@ -12,9 +11,6 @@ import buttonslogin from '@/components/login/buttonslogin.vue';
         </div>
         <div class="form">
           <formlogin />
-        </div>
-        <div class="buttons">
-          <buttonslogin />
         </div>
       </div>
     </div>
@@ -56,9 +52,11 @@ import buttonslogin from '@/components/login/buttonslogin.vue';
 }
 
 .form {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .buttons {
