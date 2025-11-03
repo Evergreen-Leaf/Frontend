@@ -122,7 +122,7 @@ h1 {
 
 .finalize-container {
     width: 100%;
-    height: 32%; 
+    height: 32%;
 }
 
 .finalize {
@@ -134,7 +134,6 @@ h1 {
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    margin-bottom: 10px;
 }
 
 .continue-container {
@@ -151,5 +150,36 @@ h1 {
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .title {
+        display: none;
+    }
+
+    .product-info {
+        display: none;
+    }
+
+    .container-right {
+        width: 100%;
+        height: 20vh;
+        border-radius: 0;
+        padding: 20px 0;
+        position: fixed;
+        bottom: 0;
+        margin: 0   ;
+        background-color: rgb(255, 255, 255);
+    }
+    .container-right-content {
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+    .total-products{
+        font-size: 18px;
+        height: 20%;
+    }
 }
 </style>

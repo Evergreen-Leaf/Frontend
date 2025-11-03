@@ -1,4 +1,24 @@
 <script setup>
+import { useCarrinhosStore } from "@/stores/carrinho"
+import { useUsuarioStore } from "@/stores/usuario";
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const carrinhoStore = useCarrinhosStore();
+const usuarioStore = useUsuarioStore();
+
+const user = usuarioStore.state.user
+
+if (!user) {
+    router.push({'path': '/login'});
+}
+
+onMounted(() => {
+    carrinhoStore.getCarrinho(user.id);
+});
+
+
 </script>
 
 <template>
@@ -9,87 +29,14 @@
         </div>
         <div class="container-itens">
 
-            <div class="item-container">
+            <div v-for="item in carrinhoStore.state.itensCarrinho" :key="item.id" class="item-container">
                 <div class="item-carrinho">
                     <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
+                        <span>{{ item.nome }}</span>
                     </div>
                     <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item-container">
-                <div class="item-carrinho">
-                    <div class="left">
-                        <p>1</p>
-                        <p>chips de mandioca</p>
-                    </div>
-                    <div class="right">
-                        <p>
-                            R$19,90
-                        </p>
-                        <button>X</button>
+                        <span>R$ {{ item.preco }}</span>
+                        <button @click="carrinhoStore.deleteItem(item.id, user.id)">X</button>
                     </div>
                 </div>
             </div>
@@ -183,5 +130,22 @@ button {
     border-radius: 14px;
     font-size: 15px;
     cursor: pointer;
+}
+@media (max-width: 1024px) {
+    .carrinho-left-container {
+        width: 100%;
+        height: auto;
+        border-radius: 0px;
+    }
+    button{
+        scale: 0.8;
+        border-radius: 20px;
+    }
+    .right{
+        margin: 0px;
+    }
+    p{
+        font-size: 16px;
+    }
 }
 </style>

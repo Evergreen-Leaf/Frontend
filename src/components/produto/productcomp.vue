@@ -45,10 +45,10 @@ onMounted(async () => {
             </div>
             <div class="right-container">
                 <div class="right">
-                    <producttitle class="hidden fade-in" />
-                    <productdescription class="hidden fade-in" />
-                    <productprice class="hidden fade-in" />
-                    <productbuttons class="hidden fade-in" />
+                    <producttitle class="hidden fade-in"/>
+                    <productdescription class="hidden fade-in"/>
+                    <productprice class="hidden fade-in"/>
+                    <productbuttons :id="router.params.id" class="hidden fade-in"/>
                 </div>
             </div>
         </div>
