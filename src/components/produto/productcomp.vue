@@ -4,7 +4,7 @@ import { useProdutoStore } from '@/stores/produto'
 
 import { useRoute } from 'vue-router'
 
-const route = useRoute()
+const router = useRoute()
 const produtoStore = useProdutoStore()
 import productimg from './productimg.vue'
 import producttitle from './producttitle.vue'
@@ -14,7 +14,6 @@ import productbuttons from './productbuttons.vue'
 import productlist from '@/components/produto/productlist.vue'
 
 onMounted(async () => {
-    await produtosStore.getProductsByCategoria(route.params.name)
     await produtoStore.getProduto(router.params.id)
     const elements = document.querySelectorAll('.fade-in')
 
@@ -57,7 +56,7 @@ onMounted(async () => {
         <div class="related-products-container">
             <h2>RELACIONADOS</h2>
             <div class="related-products-list">
-                <productlist :quantidade="4" :categoria="route.params.name" class="hidden fade-in" />
+                <productlist :quantidade="4" :categoria="router.params.name" class="hidden fade-in" />
             </div>
         </div>
 
