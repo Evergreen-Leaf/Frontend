@@ -1,5 +1,12 @@
 <script setup>
+import usuario from '@/services/usuario';
 import { useUsuarioStore } from '@/stores/usuario';
+import { computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
+const usuarioStore = useUsuarioStore();
+
+const user = computed(() => usuarioStore.state.user);
 
 const UsuarioStore = useUsuarioStore();
 
@@ -12,23 +19,24 @@ function handleLogout() {
 }
 
 </script>
-
 <template>
     <div class="container">
         <router-link to="/carrinho">
             <img v-if="!scrolled" src="/public/cart-icon.png" />
             <img v-else src="/public/cart-icon-black.png" />
         </router-link>
+
+        <p v-if="user">{{ user.name || 'Usuario'}}</p>
+
         <router-link v-if="!UsuarioStore.state.user" to="/login">
             <img v-if="!scrolled" src="/public/profile-icon.png" />
             <img v-else src="/public/profile-icon-black.png" />
         </router-link>
         <button @click="handleLogout" v-else style="cursor: pointer;">
-            Logout
+            Sair
         </button>
     </div>
 </template>
-
 <style scoped>
 .container {
     width: 100%;
@@ -65,6 +73,31 @@ function handleLogout() {
 
 .background-nav-button.scrolled:hover img {
     filter: brightness(0) invert(1); 
+}
+
+button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 40%;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #5BB811;
+}
+
+p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #374151;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 768px) {

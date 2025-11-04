@@ -33,8 +33,8 @@ const handleNext = () => {
         <input
           type="text"
           placeholder="Nome de usuário"
-          :value="formData.nome"
-          @input="updateField('nome', $event.target.value)"
+          :value="formData.name"
+          @input="updateField('name', $event.target.value)"
         />
       </div>
 

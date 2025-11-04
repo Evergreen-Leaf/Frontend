@@ -15,7 +15,7 @@ const router = useRouter();
 const currentStep = ref(1);
 const formData = ref({
   // Etapa 1
-  nome: '',
+  name: '',
   dia: '',
   mes: '',
   ano: '',
