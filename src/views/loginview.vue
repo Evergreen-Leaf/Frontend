@@ -1,6 +1,24 @@
 <script setup>
-import logincomp from '@/components/login/logincomp.vue';
+import ImageComp from '@/components/login/ImageComp.vue';
+import FormLogin from '@/components/login/FormLogin.vue';
 </script>
+
 <template>
-<logincomp />
+    <main>
+        <ImageComp />
+        <FormLogin />
+    </main>
 </template>
+
+<style scoped>
+main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 3fr 1.5fr;
+}
+@media (max-width: 1024px) {
+  main {
+    display: flex;
+    justify-content: center;
+}}  
+</style>

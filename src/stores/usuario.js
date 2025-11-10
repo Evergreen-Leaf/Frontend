@@ -6,12 +6,14 @@ export const useUsuarioStore = defineStore('usuario', () => {
   const state = useLocalStorage('usuario_state', {
     user: null,
     token: null,
+    refreshToken: null,
   })
 
   const login = async (email, password) => {
     try {
       const response = await UsuarioService.login(email, password)
       state.value.token = response.access
+      state.value.refreshToken = response.refresh
 
       const meData = await UsuarioService.getUserProfile(response.access)
       state.value.user = meData

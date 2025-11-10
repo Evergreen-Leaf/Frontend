@@ -27,7 +27,7 @@ class EnderecosService {
             return response;
         } catch (error) {
             console.error(error);
-            return error;
+            throw error;
         }
     }
 

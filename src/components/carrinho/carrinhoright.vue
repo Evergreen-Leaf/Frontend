@@ -1,4 +1,26 @@
 <script setup>
+
+import { useCarrinhosStore } from "@/stores/carrinho"
+import { useUsuarioStore } from "@/stores/usuario";
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const carrinhoStore = useCarrinhosStore();
+const usuarioStore = useUsuarioStore();
+
+const user = usuarioStore.state.user
+
+if (!user) {
+    router.push({ 'path': '/login' });
+}
+
+onMounted(() => {
+    carrinhoStore.getCarrinho(user.id);
+});
+
+
+
 </script>
 
 <template>
@@ -13,11 +35,11 @@
                     <p>Produto</p>
                     <p>Preço</p>
                 </div>
-                <div class="info-container">
+                <div v-for="item in carrinhoStore.state.itensCarrinho" :key="item.id" class="info-container">
                     <div class="info-item">
-                        <p>3</p>
-                        <p>chips de mandioca</p>
-                        <p>R$59,70</p>
+                        <p>1</p>
+                        <p>{{ item.nome }}</p>
+                        <p>{{ item.preco }}</p>
                     </div>
                 </div>
             </div>
@@ -30,7 +52,7 @@
                     <button class="finalize">Finalizar compra</button>
                 </div>
                 <div class="continue-container">
-                    <button class="continue">Continuar comprando</button>
+                    <button @click="$router.push('/')" class="continue">Continuar comprando</button>
                 </div>
             </div>
         </div>
@@ -168,16 +190,18 @@ h1 {
         padding: 20px 0;
         position: fixed;
         bottom: 0;
-        margin: 0   ;
+        margin: 0;
         background-color: rgb(255, 255, 255);
     }
+
     .container-right-content {
-        display: flex; 
+        display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0;
     }
-    .total-products{
+
+    .total-products {
         font-size: 18px;
         height: 20%;
     }

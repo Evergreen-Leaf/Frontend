@@ -42,12 +42,10 @@ const AbrirMenu = () => {
   menuAberto.value = !menuAberto.value
 }
 
-// Quando o menu abre, o header fica scrolled e só volta ao normal se o menu fechar e a rolagem for pequena
 watch(menuAberto, (val) => {
   if (val) {
     isScrolled.value = true
   } else {
-    // Só volta ao normal se não estiver forçado e a rolagem for pequena
     isScrolled.value = props.forceScrolled ? true : window.scrollY > 50
   }
 })
