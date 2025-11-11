@@ -1,5 +1,5 @@
 <script setup>
-
+import { computed } from "vue";
 import { useCarrinhosStore } from "@/stores/carrinho"
 import { useUsuarioStore } from "@/stores/usuario";
 import { onMounted } from "vue";
@@ -19,6 +19,11 @@ onMounted(() => {
     carrinhoStore.getCarrinho(user.id);
 });
 
+const totalPreco = computed(() => {
+    return carrinhoStore.state.itensCarrinho.reduce((total, item) => {
+        return total + parseFloat(item.preco.replace('R$ ', '').replace(',', '.'));
+    }, 0).toFixed(2);
+});
 
 
 </script>
@@ -45,7 +50,7 @@ onMounted(() => {
             </div>
             <div class="total-products">
                 <p>Total</p>
-                <p>R$ 000.00</p>
+                <p>R$ {{ totalPreco }}</p>
             </div>
             <div class="finalize-continue-btns">
                 <div class="finalize-container">
