@@ -67,10 +67,9 @@ watch(menuAberto, (val) => {
         </a>
 
         <div class="perfil-bottom">
-          <button id="profile-button">
-            <img v-if="!isScrolled" src="/public/profile-icon.png" />
-            <img v-else src="/public/profile-icon-black.png" />
-          </button>
+          <router-link to="/login">
+            <img src="/public/profile-icon-black.png" />
+          </router-link>
         </div>
       </div>
       <div class="logo">
@@ -182,16 +181,11 @@ header.scrolled a {
   display: none;
 }
 
-#profile-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
 .menu-lateral {
   display: none;
 }
+
+
 
 @media (max-width: 768px) {
 
@@ -247,9 +241,13 @@ header.scrolled a {
   }
 
   .perfil-bottom {
-    margin-top: auto;
+    margin: auto;
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
   }
 
   @keyframes slide {

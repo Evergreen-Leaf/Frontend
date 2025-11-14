@@ -33,10 +33,12 @@ onMounted(async () => {
 <template>
   <div class="container-product-page">
     <div class="container-benefit">
-      <benefit class="hidden fade-in"/>
+      <benefit class="hidden fade-in" />
     </div>
     <div class="container-products-title">
-      <h1 class="hidden fade-in" ><h1 class="hidden fade-in">{{ route.params.name }}</h1></h1>
+      <h1 class="hidden fade-in">
+        <h1 class="hidden fade-in">{{ route.params.name }}</h1>
+      </h1>
     </div>
     <div class="container-products">
       <productlist :quantidade="8" :categoria="route.params.name" class="hidden fade-in" />
@@ -45,38 +47,48 @@ onMounted(async () => {
 </template>
 <style scoped>
 .container-product-page {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #F5F5F5;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5F5F5;
 }
 
 .container-benefit {
-    width: 100%;
-    height: 30vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-    margin-top: 5%
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  scale: 0.9;
 }
 
 .container-products-title {
-    width: 85%;
-    height: 10vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  width: 85%;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .container-products {
-    width: 100%;
-    height: 130vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  width: 100%;
+  height: 130vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+h1 {
+  font-size: 40px;
+  color: #333333;
+}
+
+h1::first-letter {
+  text-transform: uppercase;
 }
 
 .hidden {
@@ -90,5 +102,19 @@ onMounted(async () => {
 .visible {
   opacity: 2;
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .container-benefit {
+    scale: 0.8;
+  }
+
+}
+
+@media (max-width: 500px) {
+  .container-benefit {
+    scale: 0.8;
+  }
+
 }
 </style>
