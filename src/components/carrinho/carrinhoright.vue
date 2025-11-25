@@ -11,13 +11,11 @@ const usuarioStore = useUsuarioStore();
 
 const user = usuarioStore.state.user
 
-if (!user) {
-    router.push({ 'path': '/login' });
+if (user?.name) {
+    onMounted(() => {
+        carrinhoStore.getCarrinho(user.id);
+    });
 }
-
-onMounted(() => {
-    carrinhoStore.getCarrinho(user.id);
-});
 
 const totalPreco = computed(() => {
     return carrinhoStore.state.itensCarrinho.reduce((total, item) => {
