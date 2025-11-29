@@ -44,10 +44,10 @@ onMounted(async () => {
             </div>
             <div class="right-container">
                 <div class="right">
-                    <producttitle class="hidden fade-in"/>
-                    <productdescription class="hidden fade-in"/>
-                    <productprice class="hidden fade-in"/>
-                    <productbuttons :id="router.params.id" class="hidden fade-in"/>
+                    <producttitle class="hidden fade-in" />
+                    <productdescription class="hidden fade-in" />
+                    <productprice class="hidden fade-in" />
+                    <productbuttons :id="router.params.id" class="hidden fade-in" />
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@ onMounted(async () => {
             <h2>RELACIONADOS</h2>
             <div class="related-products-list">
                 <productlist :quantidade="4" :categoria="router.params.name" class="hidden fade-in" />
-o            </div>
+            </div>
         </div>
 
     </div>
@@ -174,19 +174,22 @@ h2 {
         border-bottom: 2px solid #00000010;
         border-left: 0;
         border-radius: 0;
+        
     }
-
     .container-product-screen {
         align-items: flex-start;
         height: auto;
     }
 
     .left-container {
+        background-color: #ffffff;
         width: 100%;
         height: auto;
+
     }
 
     .left {
+        margin-top: 8rem;
         width: 100%;
         height: auto;
     }
@@ -198,6 +201,7 @@ h2 {
     }
 
     .right {
+        margin-top: 10rem;
         grid-template-rows: repeat(4, auto);
         row-gap: 1rem;
         padding: 1rem 0;

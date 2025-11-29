@@ -54,6 +54,11 @@ if(!usuarioStore.state.user) {
         width: 100%;
         height: 100%;
         border-radius: 0;
+        border: none;
+        margin: 0;
+    }
+    .container-content {
+        height: 90%;
     }
 }
 </style>

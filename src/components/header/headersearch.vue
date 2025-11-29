@@ -22,11 +22,11 @@ defineProps({
 
 <style scoped>
 .container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  top: 5%;
+  left: 60%;
+  width: 60vw;
+  transform: translate(-50%, -50%);
 }
 
 .container-pesquisa {

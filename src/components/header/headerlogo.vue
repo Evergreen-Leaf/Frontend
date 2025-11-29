@@ -13,8 +13,9 @@ defineProps({
 div {
     width: 100%;
     display: flex;
-    justify-content: center;
+   
     align-items: center;
+    margin: 0 0 0 8%
 }
 #colorida {
     transform: scale(0.89);}
