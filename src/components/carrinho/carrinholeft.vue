@@ -8,15 +8,15 @@ const router = useRouter();
 const carrinhoStore = useCarrinhosStore();
 const usuarioStore = useUsuarioStore();
 
-const user = usuarioStore.state.user
+const user = usuarioStore.state.user;
 
-if (user?.name) {
-    onMounted(() => {
-        carrinhoStore.getCarrinho(user.id);
-    });
+if (!user) {
+  router.push({ path: '/login' });
+} else {
+      onMounted(() => {
+    carrinhoStore.getCarrinho(user.id);
+  });
 }
-
-
 </script>
 
 <template>
@@ -38,7 +38,7 @@ if (user?.name) {
                     </div>
                 </div>
             </div>
-            <div v-if="!carrinhoStore.state.itensCarrinho[0]">
+            <div id="t2" v-if="!carrinhoStore.state.itensCarrinho[0]">
                 <h2>Não há itens no carrinho</h2>
             </div>
 
@@ -73,6 +73,12 @@ title {
 h1 {
     font-size: 30px;
     color: #333333;
+    margin: 5vh 0 2vh 0;
+}
+
+#t2 {
+    font-size: smaller;
+    color: #909090;
 }
 
 .container-itens {
@@ -139,6 +145,9 @@ button {
         width: 100%;
         height: auto;
         border-radius: 0px;
+        margin: 0;
+        background-color: #ffffff;
+
     }
 
     button {
@@ -153,5 +162,9 @@ button {
     p {
         font-size: 16px;
     }
+    h1{
+        scale: 0.9;
+    }
+    
 }
 </style>

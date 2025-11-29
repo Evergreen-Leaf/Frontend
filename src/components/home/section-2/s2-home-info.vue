@@ -1,4 +1,4 @@
-<script setup>
+  <script setup>
 </script>
 
 <template>
@@ -47,7 +47,8 @@
   align-items: center;
   gap: 20px; 
   width: 100%;
-  margin: 10vh 0;
+  height: auto;
+  scale: 0.9;
 }
 
 .info {
