@@ -1,24 +1,27 @@
 <script setup>
-
+import { computed } from "vue";
 import { useCarrinhosStore } from "@/stores/carrinho"
 import { useUsuarioStore } from "@/stores/usuario";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-
+    
 const router = useRouter();
 const carrinhoStore = useCarrinhosStore();
 const usuarioStore = useUsuarioStore();
 
 const user = usuarioStore.state.user
 
-if (!user) {
-    router.push({ 'path': '/login' });
+if (user?.name) {
+    onMounted(() => {
+        carrinhoStore.getCarrinho(user.id);
+    });
 }
 
-onMounted(() => {
-    carrinhoStore.getCarrinho(user.id);
+const totalPreco = computed(() => {
+    return carrinhoStore.state.itensCarrinho.reduce((total, item) => {
+        return total + parseFloat(item.preco.replace('R$ ', '').replace(',', '.'));
+    }, 0).toFixed(2);
 });
-
 
 
 </script>
@@ -45,7 +48,7 @@ onMounted(() => {
             </div>
             <div class="total-products">
                 <p>Total</p>
-                <p>R$ 000.00</p>
+                <p>R$ {{ totalPreco }}</p>
             </div>
             <div class="finalize-continue-btns">
                 <div class="finalize-container">
@@ -127,7 +130,7 @@ h1 {
     height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
     font-size: 20px;
     color: #333333;
 }
@@ -137,14 +140,15 @@ h1 {
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 10px;
 }
 
 
-.finalize-container {
+.finalize-container,
+.continue-container {
     width: 100%;
-    height: 32%;
+    height: 25%;
 }
 
 .finalize {
@@ -158,11 +162,6 @@ h1 {
     cursor: pointer;
 }
 
-.continue-container {
-    width: 100%;
-    height: 32%;
-}
-
 .continue {
     width: 100%;
     height: 100%;
@@ -173,7 +172,12 @@ h1 {
     font-size: 16px;
     cursor: pointer;
 }
-
+@media (max-width: 1280px) {
+    h1{
+        font-size: 24px;
+    }
+    
+}
 @media (max-width: 1024px) {
     .title {
         display: none;
@@ -187,6 +191,7 @@ h1 {
         width: 100%;
         height: 20vh;
         border-radius: 0;
+        border-top: 1.5px solid rgba(0, 0, 0, 0.2);
         padding: 20px 0;
         position: fixed;
         bottom: 0;
@@ -202,8 +207,26 @@ h1 {
     }
 
     .total-products {
+        width: 90%;
         font-size: 18px;
         height: 20%;
     }
+
+    .finalize-continue-btns {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    .finalize-container,
+    .continue-container {
+        width: 100%;
+        height: 35%;
+    }
+
 }
 </style>

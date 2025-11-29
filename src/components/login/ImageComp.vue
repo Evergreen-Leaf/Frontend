@@ -7,7 +7,7 @@
 
 <style scoped>
 .image {
-  background-image: url('./LoginImage.png');
+  background-image: url('/LoginImage.png');
   background-size: cover;
   background-position: center;
   height: 100%;

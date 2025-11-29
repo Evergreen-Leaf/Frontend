@@ -8,17 +8,15 @@ const router = useRouter();
 const carrinhoStore = useCarrinhosStore();
 const usuarioStore = useUsuarioStore();
 
-const user = usuarioStore.state.user
+const user = usuarioStore.state.user;
 
 if (!user) {
-    router.push({'path': '/login'});
-}
-
-onMounted(() => {
+  router.push({ path: '/login' });
+} else {
+      onMounted(() => {
     carrinhoStore.getCarrinho(user.id);
-});
-
-
+  });
+}
 </script>
 
 <template>
@@ -40,10 +38,10 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
-            <div v-if="!carrinhoStore.state.itensCarrinho[0]">
+            <div id="t2" v-if="!carrinhoStore.state.itensCarrinho[0]">
                 <h2>Não há itens no carrinho</h2>
             </div>
-            
+
 
         </div>
     </div>
@@ -75,6 +73,12 @@ title {
 h1 {
     font-size: 30px;
     color: #333333;
+    margin: 5vh 0 2vh 0;
+}
+
+#t2 {
+    font-size: smaller;
+    color: #909090;
 }
 
 .container-itens {
@@ -86,7 +90,8 @@ h1 {
     justify-content: flex-start;
     gap: 1.5rem;
     overflow-y: auto;
-}   
+}
+
 .item-container {
     width: 90%;
     height: 12%;
@@ -134,21 +139,32 @@ button {
     font-size: 15px;
     cursor: pointer;
 }
+
 @media (max-width: 1024px) {
     .carrinho-left-container {
         width: 100%;
         height: auto;
         border-radius: 0px;
+        margin: 0;
+        background-color: #ffffff;
+
     }
-    button{
+
+    button {
         scale: 0.8;
         border-radius: 20px;
     }
-    .right{
+
+    .right {
         margin: 0px;
     }
-    p{
+
+    p {
         font-size: 16px;
     }
+    h1{
+        scale: 0.9;
+    }
+    
 }
 </style>

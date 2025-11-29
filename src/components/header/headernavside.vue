@@ -25,7 +25,7 @@ function handleLogout() {
             <img v-if="!scrolled" src="/public/cart-icon.png" />
             <img v-else src="/public/cart-icon-black.png" />
         </router-link>
-
+        <div id="profile-button"> 
         <p v-if="user">{{ user.name || 'Usuario'}}</p>
 
         <router-link v-if="!UsuarioStore.state.user" to="/login">
@@ -35,6 +35,7 @@ function handleLogout() {
         <button @click="handleLogout" v-else style="cursor: pointer;">
             Sair
         </button>
+    </div>
     </div>
 </template>
 <style scoped>
@@ -100,7 +101,7 @@ p {
     font-weight: 600;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     #profile-button {
         display: none;
     }

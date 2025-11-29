@@ -1,5 +1,9 @@
 <script setup>
+import usuario from '@/services/usuario';
+import { useUsuarioStore } from '@/stores/usuario';
+import { useRouter } from "vue-router";
 import { ref, onMounted, onUnmounted, watch } from 'vue'
+
 import headerlogo from './headerlogo.vue'
 import headernav from './headersearch.vue'
 import headernavside from './headernavside.vue'
@@ -12,13 +16,21 @@ const props = defineProps({
   }
 })
 
+const router = useRouter()
+const UsuarioStore = useUsuarioStore()
+
 const isScrolled = ref(false)
 const menuAberto = ref(false)
 
-const handleScroll = () => {
-  // Se o menu estiver aberto, não altera o estado scrolled
-  if (menuAberto.value) return
+const user = UsuarioStore.state.user
 
+// ─────────────────────────────────────────────
+//  SCROLL
+// ─────────────────────────────────────────────
+const handleScroll = () => {
+  // Se o menu estiver aberto, não deixa perder o scrolled
+  if (menuAberto.value) return
+  
   if (!props.forceScrolled) {
     isScrolled.value = window.scrollY > 50
   }
@@ -38,6 +50,9 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
+// ─────────────────────────────────────────────
+//  MENU
+// ─────────────────────────────────────────────
 const AbrirMenu = () => {
   menuAberto.value = !menuAberto.value
 }
@@ -49,11 +64,21 @@ watch(menuAberto, (val) => {
     isScrolled.value = props.forceScrolled ? true : window.scrollY > 50
   }
 })
+
+// ─────────────────────────────────────────────
+//  LOGOUT
+// ─────────────────────────────────────────────
+const handleLogout = async () => {
+  await usuario.logout()
+  UsuarioStore.setUser(null)
+  router.push("/login")
+}
 </script>
+
 
 <template>
   <header :class="{ scrolled: isScrolled }">
-    <div class="header-s1">
+    <div class="header-s1" :class="{ isScrolled }">
       <div class="hamburguerbutton">
         <hamburguerbutton :scrolled="isScrolled" @abrirMenu="AbrirMenu" />
       </div>
@@ -63,11 +88,14 @@ watch(menuAberto, (val) => {
         <a href="https://www.nutren.com.br/mulher/artigos/ciencia-da-nutricao/bem-estar-saude">
           DICAS DE BEM-ESTAR
         </a>
-
         <div class="perfil-bottom">
-          <button id="profile-button">
-            <img v-if="!isScrolled" src="/public/profile-icon.png" />
-            <img v-else src="/public/profile-icon-black.png" />
+          <p v-if="user">{{ user.name || 'Usuario' }}</p>
+
+          <router-link v-if="!UsuarioStore.state.user" to="/login">
+            <img src="/public/profile-icon-black.png" />
+          </router-link>
+          <button @click="handleLogout" v-else style="cursor: pointer;">
+            Sair
           </button>
         </div>
       </div>
@@ -124,6 +152,10 @@ header {
   align-items: center;
   background-color: #00000000;
   transition: background 0.3s;
+}
+
+header.scrolled .header-s2-container {
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .header-s2 {
@@ -191,7 +223,11 @@ header.scrolled a {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+
+  .header-s1.isScrolled {
+    border-bottom: 1.5px solid #00000023;
+  }
 
   .nav,
   .header-s2-container {
@@ -236,6 +272,7 @@ header.scrolled a {
     align-items: center;
     flex-direction: column;
     animation: slide .2s forwards;
+    border-right: 1.5px solid #00000023;
   }
 
   .menu-lateral a {

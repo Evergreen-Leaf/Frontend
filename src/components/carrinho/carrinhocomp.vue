@@ -1,7 +1,15 @@
 <script setup>
 import carrinholeft from './carrinholeft.vue';
 import carrinhoright from './carrinhoright.vue';
+import { useUsuarioStore } from '@/stores/usuario';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+const usuarioStore = useUsuarioStore();
+
+if(!usuarioStore.state.user) {
+    router.push({ 'path': '/login' });
+}
 </script>
 
 <template>
@@ -46,6 +54,11 @@ import carrinhoright from './carrinhoright.vue';
         width: 100%;
         height: 100%;
         border-radius: 0;
+        border: none;
+        margin: 0;
+    }
+    .container-content {
+        height: 90%;
     }
 }
 </style>

@@ -55,14 +55,20 @@ onMounted(async () => {
 
 .container-benefit {
     width: 100%;
-    height: 30vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
-    margin-top: 5%
-}
+    margin-top: 20vh;
 
+}
+h1{
+  font-size: 40px;
+}
+h1:first-letter {
+  text-transform: uppercase;
+}
 .container-products-title {
     width: 85%;
     height: 10vh;
@@ -90,5 +96,16 @@ onMounted(async () => {
 .visible {
   opacity: 2;
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .container-benefit {
+    height: auto;
+    scale: 0.8;
+    margin-top: 15vh;
+  }
+  .container-products {
+    height: auto;
+  }
 }
 </style>
