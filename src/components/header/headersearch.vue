@@ -22,17 +22,14 @@ defineProps({
 
 <style scoped>
 .container {
-  position: fixed;
-  top: 5%;
-  left: 60%;
-  width: 60vw;
+  width: 100%;
   transform: translate(-50%, -50%);
 }
 
 .container-pesquisa {
   display: flex;
   justify-content: space-evenly;
-  width: 70%;
+  width: 100%;
   background-color: transparent;
   border-radius: 2rem;
 }

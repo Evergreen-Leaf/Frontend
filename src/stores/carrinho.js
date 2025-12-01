@@ -19,8 +19,8 @@ export const useCarrinhosStore = defineStore("carrinhos", () => {
             const response  = await CarrinhosService.getCarrinho(id);
             console.log(response)
             state.selectedCarrinho = response.data;
-            console.log(response?.data?.produto)
-            state.itensCarrinho = response.data?.produto;
+            // Extrai os produtos do carrinho (que vêm como array de objetos)
+            state.itensCarrinho = response.data?.carrinho?.produto || [];
             return response;
         }
         catch (error) {
@@ -35,7 +35,8 @@ export const useCarrinhosStore = defineStore("carrinhos", () => {
         state.loading = true;
         try {
             const response = await CarrinhosService.addItem(UserId, ProductId);
-            state.itensCarrinho.push(response.data);
+            // Recarrega o carrinho para sincronizar com o backend
+            await getCarrinho(UserId);
             return response;
         } catch (error) {
             state.error = error;

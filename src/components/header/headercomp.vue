@@ -30,7 +30,7 @@ const user = UsuarioStore.state.user
 const handleScroll = () => {
   // Se o menu estiver aberto, não deixa perder o scrolled
   if (menuAberto.value) return
-  
+
   if (!props.forceScrolled) {
     isScrolled.value = window.scrollY > 50
   }
