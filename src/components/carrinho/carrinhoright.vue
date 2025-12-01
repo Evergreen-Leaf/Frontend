@@ -23,6 +23,14 @@ const totalPreco = computed(() => {
     }, 0).toFixed(2);
 });
 
+const finalizarCompra = async () => {
+    if (user && carrinhoStore.state.selectedCarrinho?.carrinho?.id) {
+        await carrinhoStore.deleteCarrinho(carrinhoStore.state.selectedCarrinho.carrinho.id);
+        carrinhoStore.state.itensCarrinho = [];
+        carrinhoStore.state.selectedCarrinho = null;
+        // Opcional: redirecionar ou mostrar mensagem de sucesso
+    }
+}
 
 </script>
 
@@ -52,7 +60,7 @@ const totalPreco = computed(() => {
             </div>
             <div class="finalize-continue-btns">
                 <div class="finalize-container">
-                    <button class="finalize">Finalizar compra</button>
+                    <button class="finalize" @click="finalizarCompra">Finalizar compra</button>
                 </div>
                 <div class="continue-container">
                     <button @click="$router.push('/')" class="continue">Continuar comprando</button>
