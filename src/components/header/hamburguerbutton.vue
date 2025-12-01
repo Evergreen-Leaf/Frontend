@@ -4,6 +4,7 @@ const emit = defineEmits(['AbrirMenu'])
 const handleClick = () => {
   emit('AbrirMenu')
 }
+
 defineProps({
   scrolled: Boolean
 })
@@ -13,8 +14,9 @@ defineProps({
   <div class="container">
     <div :class="['background-hamburguer', { scrolled: scrolled }]">
       <button class="hamburger" @click="handleClick">
-        <img v-if="!scrolled" src="/public/hamburguerMenu.png" />
-        <img v-else src="/public/hamburguerMenuBlack.png" /> </button>
+        <img v-if="!scrolled" src="/public/hamburguerMenu.png" class="icon" />
+        <img v-else src="/public/hamburguerMenuBlack.png" class="icon" />
+      </button>
     </div>
   </div>
 </template>
@@ -29,41 +31,29 @@ defineProps({
   align-items: center;
   justify-content: center;
 }
+
 .container {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
+
 .background-hamburguer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 50px;
 }
 
-.background-hamburguer img {
-    transition: filter 0.3s ease;
+.icon {
+  transition: transform 0.25s ease;
 }
 
-.background-hamburguer:hover:not(.scrolled) {
-    background-color: rgb(255, 255, 255); 
-}
-
-.background-hamburguer:hover:not(.scrolled) img {
-    filter: invert(63%) sepia(22%) saturate(530%) 
-           hue-rotate(65deg) brightness(92%) contrast(90%);
-}
-
-.background-hamburguer.scrolled:hover {
-    background-color: rgb(105, 158, 95); 
-}
-
-.background-hamburguer.scrolled:hover img {
-    filter: brightness(0) invert(1); 
+.background-hamburguer:hover .icon {
+  transform: scale(1.07);
 }
 
 </style>

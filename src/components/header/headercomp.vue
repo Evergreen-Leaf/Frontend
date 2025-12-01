@@ -15,7 +15,15 @@ const props = defineProps({
     default: false
   }
 })
+const mostrarPerfilMenu = ref(false)
 
+const abrirHover = () => {
+  if (user) mostrarPerfilMenu.value = true
+}
+
+const fecharHover = () => {
+  mostrarPerfilMenu.value = false
+}
 const router = useRouter()
 const UsuarioStore = useUsuarioStore()
 
@@ -89,14 +97,17 @@ const handleLogout = async () => {
           DICAS DE BEM-ESTAR
         </a>
         <div class="perfil-bottom">
-          <p v-if="user">{{ user.name || 'Usuario' }}</p>
+          <div v-if="user">
+            <p>{{ user.name || 'Usuário' }}</p>
 
-          <router-link v-if="!UsuarioStore.state.user" to="/login">
+            <button @click="handleLogout" class="exit-button">
+              Sair
+            </button>
+          </div>
+
+          <router-link v-else to="/login">
             <img src="/public/profile-icon-black.png" />
           </router-link>
-          <button @click="handleLogout" v-else style="cursor: pointer;">
-            Sair
-          </button>
         </div>
       </div>
       <div class="logo">
@@ -136,7 +147,7 @@ header {
 }
 
 .header-s1 {
-  width: 100%;
+  width: 100vw;
   height: 10vh;
   display: flex;
   justify-content: space-around;
@@ -155,7 +166,7 @@ header {
 }
 
 header.scrolled .header-s2-container {
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #00000046;
 }
 
 .header-s2 {
@@ -223,10 +234,62 @@ header.scrolled a {
   display: none;
 }
 
+.perfil-bottom {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  border-top: 1.5px solid #00000023;
+  gap: 18px;
+}
+
+/* Nome do usuário */
+.perfil-bottom p {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+  text-align: center;
+  width: 100%;
+}
+
+.perfil-bottom p::first-letter {
+  text-transform: uppercase;
+}
+.exit-button {
+  width: 200px;
+  padding: 12px 0;
+  background-color: #ef4444;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-sizing: border-box; 
+}
+
+.exit-button:hover {
+  background-color: white;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+
 @media (max-width: 1024px) {
+  .header-s1 {
+    height: 8vh;
+    justify-content: space-between;
+  }
 
   .header-s1.isScrolled {
-    border-bottom: 1.5px solid #00000023;
+    border-bottom: 1px solid #00000046;
+    justify-content: space-between;
+
   }
 
   .nav,
@@ -243,6 +306,9 @@ header.scrolled a {
     margin: 0;
     transform: scale(0.8);
     width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .logo.scrolled {
@@ -264,7 +330,7 @@ header.scrolled a {
     bottom: 0;
     left: 0;
     width: 60%;
-    height: 90vh;
+    height: 92vh;
     background: white;
     z-index: 4;
     padding: 180px 25px;
@@ -294,6 +360,16 @@ header.scrolled a {
 
     to {
       transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 400px) {
+    .menu-lateral {
+      width: 70%;
+    }
+
+    .logo {
+      scale: 0.8;
     }
   }
 }

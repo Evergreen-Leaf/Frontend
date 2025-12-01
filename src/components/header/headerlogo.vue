@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  scrolled: Boolean
+    scrolled: Boolean
 })
 </script>
 <template>
@@ -11,12 +11,20 @@ defineProps({
 </template>
 <style scoped>
 div {
-    width: 100%;
     display: flex;
-   
     align-items: center;
-    margin: 0 0 0 8%
+    justify-content: center;
+    margin: 0 0 0 8%;
+    cursor: pointer;
 }
+
 #colorida {
-    transform: scale(0.89);}
+    transform: scale(0.89);
+}
+
+@media (max-width: 1024px) {
+    div{
+        margin: 0;
+    }
+}
 </style>

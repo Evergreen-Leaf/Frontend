@@ -71,4 +71,13 @@ h2 {
         font-size: 18px;
     }
 }
+@media (max-width: 400px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+}
 </style>

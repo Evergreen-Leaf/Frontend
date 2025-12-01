@@ -1,113 +1,125 @@
 <script setup>
-import usuario from '@/services/usuario';
 import { useUsuarioStore } from '@/stores/usuario';
-import { computed, onMounted } from "vue";
-import { useRouter } from "vue-router";
+import { computed, ref } from "vue";
 
 const usuarioStore = useUsuarioStore();
-
 const user = computed(() => usuarioStore.state.user);
-
-const UsuarioStore = useUsuarioStore();
 
 defineProps({
     scrolled: Boolean
-})
+});
 
 function handleLogout() {
-    UsuarioStore.logout();
+    usuarioStore.logout();
 }
 
+const isDropdownOpen = ref(false);
 </script>
+
 <template>
     <div class="container">
-        <router-link to="/carrinho">
-            <img v-if="!scrolled" src="/public/cart-icon.png" />
-            <img v-else src="/public/cart-icon-black.png" />
+        <router-link class="icon-button" to="/carrinho">
+            <img v-if="!scrolled" src="/cart-icon.png" />
+            <img v-else src="/cart-icon-black.png" />
         </router-link>
-        <div id="profile-button"> 
-        <p v-if="user">{{ user.name || 'Usuario'}}</p>
 
-        <router-link v-if="!UsuarioStore.state.user" to="/login">
-            <img v-if="!scrolled" src="/public/profile-icon.png" />
-            <img v-else src="/public/profile-icon-black.png" />
-        </router-link>
-        <button @click="handleLogout" v-else style="cursor: pointer;">
-            Sair
-        </button>
-    </div>
+        <div 
+            id="profile-wrapper"
+            @mouseenter="isDropdownOpen = true"
+            @mouseleave="isDropdownOpen = false"
+        >
+            <router-link 
+                v-if="!user" 
+                class="icon-button" 
+                to="/login"
+            >
+                <img v-if="!scrolled" src="/profile-icon.png" />
+                <img v-else src="/profile-icon-black.png" />
+            </router-link>
+
+            <div v-if="user" class="icon-button">
+                <img v-if="!scrolled" src="/profile-icon.png" />
+                <img v-else src="/profile-icon-black.png" />
+            </div>
+
+            <div 
+                v-if="user && isDropdownOpen" 
+                class="dropdown"
+            >
+                <p class="dropdown-user">{{ user.name || 'Usuário' }}</p>
+
+                <button class="dropdown-logout" @click="handleLogout">
+                    Sair
+                </button>
+            </div>
+        </div>
     </div>
 </template>
+
 <style scoped>
 .container {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
-.background-nav-button {
+
+.icon-button:hover {
+    scale: 1.07;
+}
+
+#profile-wrapper {
+    position: relative;
+}
+
+/* Dropdown */
+.dropdown {
+    width: 100px;
+    height: 90px;
+    position: absolute;
+    top: 28px;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    padding: 12px 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
+    z-index: 999;
+    border: 1px solid #00000046;
 }
 
-.background-nav-button img {
-    transition: filter 0.3s ease;
-}
-
-.background-nav-button:hover:not(.scrolled) {
-    background-color: rgb(255, 255, 255); 
-}
-
-.background-nav-button:hover:not(.scrolled) img {
-    filter: invert(63%) sepia(22%) saturate(530%) 
-           hue-rotate(65deg) brightness(92%) contrast(90%);
-}
-
-.background-nav-button.scrolled:hover {
-    background-color: rgb(105, 158, 95); 
-}
-
-.background-nav-button.scrolled:hover img {
-    filter: brightness(0) invert(1); 
-}
-
-button {
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2rem;
-    width: 40%;
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 20px;
-    background-color: #5BB811;
-}
-
-p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.dropdown-user {
     font-size: 16px;
     color: #374151;
     font-weight: 600;
 }
+.dropdown-user::first-letter {
+    text-transform: uppercase;
+}
+
+.dropdown-logout {
+    background: #ef4444;
+    border: none;
+    padding: 8px 10px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.dropdown-logout:hover {
+    background-color: white;
+    border: 2px solid #ef4444;
+    color: #ef4444;
+}
 
 @media screen and (max-width: 1024px) {
-    #profile-button {
+    #profile-wrapper {
         display: none;
     }
-    .container{
-        display: flex;
+    .container {
         justify-content: center;
     }
-  }
+}
 </style>
