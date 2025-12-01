@@ -49,6 +49,7 @@ onMounted(async () => {
   font-size: 40px;
   color: #28434C;
   text-align: center;
+  margin: 0 0 2rem 0;
 }
 
 .classes {

@@ -4,7 +4,7 @@ class CarrinhosService {
     async getCarrinho(id) {
         try {
             const response = await api.get(`/usuarios/${id}`);
-            return { data: response.data.carrinho  };
+            return response;
         } catch (error) {
             console.error(error);
             return error;
@@ -13,16 +13,30 @@ class CarrinhosService {
 
     async addItem(userId, produtoId) {
         try {
-            const data = await this.getCarrinho(userId);
+            // Busca os dados atuais do usuário
+            const usuarioResponse = await api.get(`/usuarios/${userId}`);
+            console.log('Usuário atual:', usuarioResponse.data);
+            
+            // Extrai os IDs dos produtos existentes do carrinho
+            // O backend retorna carrinho.produto como array de objetos, não de IDs
+            const produtosExistentes = usuarioResponse.data?.carrinho?.produto?.map(p => p.id) || [];
+            console.log('Produtos existentes (IDs):', produtosExistentes);
+            console.log('Novo produto a adicionar:', produtoId);
+            
+            // Adiciona o novo produto à lista
+            const novosProdutos = [...produtosExistentes, produtoId];
+            console.log('Lista completa após adicionar:', novosProdutos);
 
-            const carrinho = {
-                produtos: (data.produto)? [...data.produto, produtoId] : [produtoId],
-            }
-
-            const response = await api.patch(`/usuarios/${userId}/`, {carrinho});
-            return response;
+            // Envia para o backend com a lista completa de IDs
+            const updateResponse = await api.patch(`/usuarios/${userId}/`, {
+                carrinho: {
+                    produtos: novosProdutos
+                }
+            });
+            console.log('Resposta do PATCH:', updateResponse.data);
+            return updateResponse;
         } catch (error) {
-            console.error(error);
+            console.error('Erro ao adicionar item:', error);
             return error;
         }
     }

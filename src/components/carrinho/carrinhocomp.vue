@@ -7,20 +7,20 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const usuarioStore = useUsuarioStore();
 
-if(!usuarioStore.state.user) {
+if (!usuarioStore.state.user) {
     router.push({ 'path': '/login' });
 }
 </script>
 
 <template>
-<div class="container">
-  <div class="container-content">
-    <div class="container-carrinho">
-        <carrinholeft />
-        <carrinhoright />
+    <div class="container">
+        <div class="container-content">
+            <div class="container-carrinho">
+                <carrinholeft />
+                <carrinhoright />
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 </template>
 <style scoped>
@@ -31,6 +31,7 @@ if(!usuarioStore.state.user) {
     justify-content: center;
     align-items: end;
 }
+
 .container-content {
     width: 100%;
     height: 85%;
@@ -48,6 +49,7 @@ if(!usuarioStore.state.user) {
     display: flex;
     border: 1.5px solid rgba(0, 0, 0, 0.2);
 }
+
 @media (max-width: 1024px) {
     .container-carrinho {
         flex-direction: column;
@@ -57,6 +59,7 @@ if(!usuarioStore.state.user) {
         border: none;
         margin: 0;
     }
+
     .container-content {
         height: 90%;
     }

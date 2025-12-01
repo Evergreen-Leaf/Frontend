@@ -28,6 +28,7 @@ import s2HomeClasses from './s2-home-classes.vue';
         justify-content: center;
         width: 95%;
         max-width: 1200px;
+        margin: 8vh 0;
 }
 
 .s2home-classes {

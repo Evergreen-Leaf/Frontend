@@ -51,4 +51,9 @@ h1 {
   color: #28434C;
   margin: 5vh 0;
 }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+}
 </style>
